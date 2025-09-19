@@ -26,23 +26,23 @@ int string_view_find(const string_view *sv, char c);
 //
 // Vector of string_view declaration
 //
-typedef ptr_vec string_view_vector;
+typedef ptr_vec string_view_vec;
 
-void string_view_vector_create(string_view_vector *vec);
-void string_view_vector_destroy(string_view_vector *vec);
-void string_view_vector_push_back(string_view_vector *vec, string_view *p_value);
-void string_view_vector_pop_back(string_view_vector *vec);
-string_view *string_view_vector_get(const string_view_vector *vec, size_t index);
-void string_view_vector_set(string_view_vector *vec, size_t index, string_view *p_value);
-size_t string_view_vector_size(const string_view_vector *vec);
-size_t string_view_vector_capacity(const string_view_vector *vec);
-void string_view_vector_reserve(string_view_vector *vec, size_t new_capacity);
-void string_view_vector_resize(string_view_vector *vec, size_t new_size);
-void string_view_vector_clear(string_view_vector *vec);
-int string_view_vector_find(const string_view_vector *vec, string_view *p_value);
-void string_view_vector_remove(string_view_vector *vec, size_t index);
-void string_view_vector_insert(string_view_vector *vec, size_t index, string_view *p_value);
-void string_view_vector_reverse(string_view_vector *vec);
-void string_view_vector_shrink_to_fit(string_view_vector *vec);
-void string_view_vector_swap(string_view_vector *vec1, string_view_vector *vec2);
-void string_view_vector_copy(const string_view_vector *src, string_view_vector *dest);
+void string_view_vec_create(string_view_vec *vec);
+void string_view_vec_destroy(string_view_vec *vec);
+void string_view_vec_push_back(string_view_vec *vec, string_view *p_value);
+void string_view_vec_pop_back(string_view_vec *vec);
+string_view *string_view_vec_get(const string_view_vec *vec, size_t index);
+void string_view_vec_set(string_view_vec *vec, size_t index, string_view *p_value);
+size_t string_view_vec_size(const string_view_vec *vec);
+size_t string_view_vec_capacity(const string_view_vec *vec);
+void string_view_vec_reserve(string_view_vec *vec, size_t new_capacity);
+void string_view_vec_resize(string_view_vec *vec, size_t new_size);
+void string_view_vec_clear(string_view_vec *vec);
+int string_view_vec_find(const string_view_vec *vec, string_view *p_value);
+void string_view_vec_remove(string_view_vec *vec, size_t index);
+void string_view_vec_insert(string_view_vec *vec, size_t index, string_view *p_value);
+void string_view_vec_reverse(string_view_vec *vec);
+void string_view_vec_shrink_to_fit(string_view_vec *vec);
+void string_view_vec_swap(string_view_vec *vec1, string_view_vec *vec2);
+void string_view_vec_copy(const string_view_vec *src, string_view_vec *dest);
