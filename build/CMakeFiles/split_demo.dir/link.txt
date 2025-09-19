@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/split_demo.dir/link.d CMakeFiles/split_demo.dir/examples/split_demo.c.o -o split_demo  libpp.a

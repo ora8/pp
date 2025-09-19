@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpp.a CMakeFiles/pp.dir/src/stdvec.c.o CMakeFiles/pp.dir/src/stdstring.c.o CMakeFiles/pp.dir/src/stdstring_view.c.o CMakeFiles/pp.dir/src/function.c.o
+/usr/bin/ranlib libpp.a
