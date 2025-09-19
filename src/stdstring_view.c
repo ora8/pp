@@ -14,31 +14,38 @@ string_view *string_view_create(const char c_str[], size_t size)
     string_view_init(sv, c_str, size);
     return sv;
 }
+
 void string_view_init(string_view *sv, const char c_str[], size_t size)
 {
     sv->c_str = (char *)c_str;
     sv->size = size;
 }
+
 void string_view_destroy(string_view *sv)
 {
     free(sv);
 }
+
 size_t string_view_size(const string_view *sv)
 {
     return sv->size;
 }
+
 const char *string_view_c_str(const string_view *sv)
 {
     return sv->c_str;
 }
+
 int string_view_valid_index(const string_view *sv, size_t index)
 {
     return 0 <= index && index < sv->size;
 }
+
 char string_view_get(const string_view *sv, size_t index)
 {
     return sv->c_str[index];
 }
+
 int string_view_find(const string_view *sv, char c)
 {
     for (size_t i = 0; i < sv->size; i++)
@@ -55,9 +62,20 @@ int string_view_find(const string_view *sv, char c)
 // Vector of string_view implementation
 // Created with Copilot
 //
-void string_view_vec_create(string_view_vec *vec)
+string_view_vec *string_view_vec_create()
 {
-    ptr_vec_create(vec);
+    VEC_CREATE(string_view_vec);
+}
+
+void string_view_vec_init(string_view_vec *vec)
+{
+    ptr_vec_init(vec);
+}
+
+void string_view_vec_finit(string_view_vec *vec)
+{
+    ptr_vec_finit(vec);
+
 }
 void string_view_vec_destroy(string_view_vec *vec)
 {

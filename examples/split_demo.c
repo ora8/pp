@@ -10,7 +10,7 @@ int main()
     const char *delimiter2 = ",b";
 
     string_view_vec vec1;
-    string_view_vec_create(&vec1);
+    string_view_vec_init(&vec1);
     string_view_split_1(&vec1, text, delimiter1);
 
     printf("Split using single character delimiter '%c':\n", delimiter1);
@@ -22,10 +22,10 @@ int main()
         printf("  [%zu]: '%s' (size: %zu)\n", i, buf, string_view_size(sv));
         string_view_destroy(sv);
     }
-    string_view_vec_destroy(&vec1);
+    string_view_vec_finit(&vec1);
 
     string_view_vec vec2;
-    string_view_vec_create(&vec2);
+    string_view_vec_init(&vec2);
     string_view_split_2(&vec2, text, delimiter2);
 
     printf("\nSplit using multi-character delimiter \"%s\":\n", delimiter2);
@@ -37,7 +37,7 @@ int main()
         printf("  [%zu]: '%s' (size: %zu)\n", i, buf, string_view_size(sv));
         string_view_destroy(sv);
     }
-    string_view_vec_destroy(&vec2);
+    string_view_vec_finit(&vec2);
 
     return 0;
 }

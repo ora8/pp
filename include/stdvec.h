@@ -3,18 +3,25 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#define VEC_CREATE(x) \
-    x->data = NULL;   \
-    x->size = 0;      \
+#define VEC_CREATE(type) \
+    type *vec = malloc(sizeof(type)); \
+    VEC_INIT(vec); \
+    return vec;
+#define VEC_INIT(x) \
+    x->data = NULL; \
+    x->size = 0;    \
     x->capacity = 0;
-#define VEC_DESTROY(x) \
+#define VEC_FINIT(x)   \
     if (x->data)       \
-    {                   \
-    free(x->data);     \
-    }                   \
+    {                  \
+        free(x->data); \
+    }                  \
     x->data = NULL;    \
     x->size = 0;       \
     x->capacity = 0;
+#define VEC_DESTROY(x) \
+    VEC_FINIT(x)       \
+    free(x);
 #define VEC_PUSH_BACK(x, val, type)                                     \
     if (x->size >= x->capacity)                                         \
     {                                                                   \
@@ -135,7 +142,7 @@
             dest->capacity = src->size;                    \
         }                                                  \
     }
-#define VEC_REVERSE(x, type)               \
+#define VEC_REVERSE(x, type)                \
     {                                       \
         size_t left = 0;                    \
         size_t right = x->size - 1;         \
@@ -159,7 +166,9 @@ typedef struct
     size_t capacity;
 } char_vec;
 
-void char_vec_create(char_vec *vec);
+char_vec *char_vec_create();
+void char_vec_init(char_vec *vec);
+void char_vec_finit(char_vec *vec);
 void char_vec_destroy(char_vec *vec);
 void char_vec_push_back(char_vec *vec, char value);
 void char_vec_pop_back(char_vec *vec);
@@ -189,7 +198,9 @@ typedef struct
     size_t capacity;
 } int_vec;
 
-void int_vec_create(int_vec *vec);
+int_vec *int_vec_create();
+void int_vec_init(int_vec *vec);
+void int_vec_finit(int_vec *vec);
 void int_vec_destroy(int_vec *vec);
 void int_vec_push_back(int_vec *vec, int value);
 void int_vec_pop_back(int_vec *vec);
@@ -218,7 +229,9 @@ typedef struct
     size_t capacity;
 } double_vec;
 
-void double_vec_create(double_vec *vec);
+double_vec *double_vec_create();
+void double_vec_init(double_vec *vec);
+void double_vec_finit(double_vec *vec);
 void double_vec_destroy(double_vec *vec);
 void double_vec_push_back(double_vec *vec, double value);
 void double_vec_pop_back(double_vec *vec);
@@ -235,7 +248,7 @@ void double_vec_insert(double_vec *vec, size_t index, double value);
 void double_vec_reverse(double_vec *vec);
 void double_vec_shrink_to_fit(double_vec *vec);
 void double_vec_swap(double_vec *vec1, double_vec *vec2);
-void double_vec_copy(const double_vec *src, double_vec *dest);    
+void double_vec_copy(const double_vec *src, double_vec *dest);
 
 //
 // Vector declaration for pointer members
@@ -247,7 +260,9 @@ typedef struct
     size_t capacity;
 } ptr_vec;
 
-void ptr_vec_create(ptr_vec *vec);
+ptr_vec *ptr_vec_create();
+void ptr_vec_init(ptr_vec *vec);
+void ptr_vec_finit(ptr_vec *vec);
 void ptr_vec_destroy(ptr_vec *vec);
 void ptr_vec_push_back(ptr_vec *vec, void *value);
 void ptr_vec_pop_back(ptr_vec *vec);

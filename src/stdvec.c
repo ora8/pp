@@ -8,11 +8,20 @@
 //
 // Vector implementation for char members
 //
-void char_vec_create(char_vec *vec)
+char_vec *char_vec_create()
 {
-    VEC_CREATE(vec);
+    VEC_CREATE(char_vec);
 }
 
+void char_vect_init(char_vec *vec)
+{
+    VEC_INIT(vec);
+}
+
+void char_vec_finit(char_vec *vec)  
+{
+    VEC_FINIT(vec);
+}
 void char_vec_destroy(char_vec *vec)
 {
     VEC_DESTROY(vec);
@@ -100,10 +109,21 @@ void char_vec_reverse(char_vec *vec)
 
 //
 // Vector implementation for int members
+// Created with Copilot
 // 
-void int_vec_create(int_vec *vec)
+int_vec *int_vec_create()
 {
-    VEC_CREATE(vec);
+    VEC_CREATE(int_vec);
+}
+
+void int_vec_init(int_vec *vec)
+{
+    VEC_INIT(vec);
+}
+
+void int_vec_finit(int_vec *vec)
+{
+    VEC_FINIT(vec);
 }
 
 void int_vec_destroy(int_vec *vec)
@@ -178,11 +198,23 @@ void int_vec_set(int_vec *vec, size_t index, int value)
 
 //
 // Vector implementation for double members
+// Created with Copilot
 //
-void double_vec_create(double_vec *vec)
+double_vec *double_vec_create()
 {
-    VEC_CREATE(vec);
-}   
+    VEC_CREATE(double_vec);
+}
+
+void double_vec_init(double_vec *vec)
+{
+    VEC_INIT(vec);
+}
+
+void double_vec_finit(double_vec *vec)
+{
+    VEC_FINIT(vec);
+}
+ 
 void double_vec_destroy(double_vec *vec)
 {
     VEC_DESTROY(vec);
@@ -259,74 +291,101 @@ void double_vec_copy(const double_vec *src, double_vec *dest)
 //
 // Vector implementation for pointer members
 //
-void ptr_vec_create(ptr_vec *vec)
+ptr_vec *ptr_vec_create()
 {
-    VEC_CREATE(vec);
+    VEC_CREATE(ptr_vec);
 }
+
+void ptr_vec_init(ptr_vec *vec)
+{
+    VEC_INIT(vec);
+}
+
+void ptr_vec_finit(ptr_vec *vec)
+{
+    VEC_FINIT(vec);
+}
+
 void ptr_vec_destroy(ptr_vec *vec)  
 {
     VEC_DESTROY(vec);
 }
+
 void ptr_vec_push_back(ptr_vec *vec, void *value)   
 {
     VEC_PUSH_BACK(vec, value, void*);
 }
+
 void ptr_vec_pop_back(ptr_vec *vec) 
 {
     VEC_POP_BACK(vec);
 }
+
 void *ptr_vec_get(const ptr_vec *vec, size_t index) 
 {
     VEC_GET(vec, index);
 }
+
 void ptr_vec_set(ptr_vec *vec, size_t index, void *value)     
 {
     VEC_SET(vec, index, value);
 }
+
 size_t ptr_vec_size(const ptr_vec *vec)     
 {
     return vec->size;
 }
+
 size_t ptr_vec_capacity(const ptr_vec *vec)     
 {
     return vec->capacity;
 }
+
 void ptr_vec_reserve(ptr_vec *vec, size_t new_capacity) 
 {
     VEC_RESERVE(vec, new_capacity, void*);
 }
+
 void ptr_vec_resize(ptr_vec *vec, size_t new_size)
 {
     VEC_RESIZE(vec, new_size, void*);
 }
+
 void ptr_vec_clear(ptr_vec *vec)    
 {
     vec->size = 0;
 }
+
 int ptr_vec_find(const ptr_vec *vec, void *value)   
 {
     VEC_FIND(vec, value, void*);
 }
+
 void ptr_vec_remove(ptr_vec *vec, size_t index) 
 {
     VEC_REMOVE(vec, index);
 }
+
 void ptr_vec_insert(ptr_vec *vec, size_t index, void *value)    
 {
     VEC_INSERT(vec, index, value, void*);
 }
+
 void ptr_vec_reverse(ptr_vec *vec)  
 {
     VEC_REVERSE(vec, void*);
 }
+
 void ptr_vec_shrink_to_fit(ptr_vec *vec)    
 {
     VEC_SHRINK_TO_FIT(vec, void*);
 }
+
 void ptr_vec_swap(ptr_vec *vec1, ptr_vec *vec2)   
 {
     VEC_SWAP(vec1, vec2, ptr_vec);
 }   
+
 void ptr_vec_copy(const ptr_vec *src, ptr_vec *dest) 
 {
     VEC_COPY(src, dest, void*);

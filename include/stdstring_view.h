@@ -28,7 +28,9 @@ int string_view_find(const string_view *sv, char c);
 //
 typedef ptr_vec string_view_vec;
 
-void string_view_vec_create(string_view_vec *vec);
+string_view_vec *string_view_vec_create();
+void string_view_vec_init(string_view_vec *vec);
+void string_view_vec_finit(string_view_vec *vec);
 void string_view_vec_destroy(string_view_vec *vec);
 void string_view_vec_push_back(string_view_vec *vec, string_view *p_value);
 void string_view_vec_pop_back(string_view_vec *vec);
