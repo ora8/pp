@@ -64,11 +64,13 @@ CMAKE_BINARY_DIR = /home/urs-wagner/pp/build
 
 # The main recursive "all" target.
 all: CMakeFiles/pp.dir/all
+all: CMakeFiles/string_demo.dir/all
 all: CMakeFiles/split_demo.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/pp.dir/codegen
+codegen: CMakeFiles/string_demo.dir/codegen
 codegen: CMakeFiles/split_demo.dir/codegen
 .PHONY : codegen
 
@@ -78,6 +80,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/pp.dir/clean
+clean: CMakeFiles/string_demo.dir/clean
 clean: CMakeFiles/split_demo.dir/clean
 .PHONY : clean
 
@@ -112,6 +115,38 @@ CMakeFiles/pp.dir/codegen:
 CMakeFiles/pp.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/clean
 .PHONY : CMakeFiles/pp.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/string_demo.dir
+
+# All Build rule for target.
+CMakeFiles/string_demo.dir/all: CMakeFiles/pp.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/string_demo.dir/build.make CMakeFiles/string_demo.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/string_demo.dir/build.make CMakeFiles/string_demo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/urs-wagner/pp/build/CMakeFiles --progress-num=8,9 "Built target string_demo"
+.PHONY : CMakeFiles/string_demo.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/string_demo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/urs-wagner/pp/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/string_demo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/urs-wagner/pp/build/CMakeFiles 0
+.PHONY : CMakeFiles/string_demo.dir/rule
+
+# Convenience name for target.
+string_demo: CMakeFiles/string_demo.dir/rule
+.PHONY : string_demo
+
+# codegen rule for target.
+CMakeFiles/string_demo.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/string_demo.dir/build.make CMakeFiles/string_demo.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/urs-wagner/pp/build/CMakeFiles --progress-num=8,9 "Finished codegen for target string_demo"
+.PHONY : CMakeFiles/string_demo.dir/codegen
+
+# clean rule for target.
+CMakeFiles/string_demo.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/string_demo.dir/build.make CMakeFiles/string_demo.dir/clean
+.PHONY : CMakeFiles/string_demo.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/split_demo.dir

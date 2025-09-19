@@ -130,6 +130,19 @@ pp/fast:
 .PHONY : pp/fast
 
 #=============================================================================
+# Target rules for targets named string_demo
+
+# Build rule for target.
+string_demo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 string_demo
+.PHONY : string_demo
+
+# fast build rule for target.
+string_demo/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/string_demo.dir/build.make CMakeFiles/string_demo.dir/build
+.PHONY : string_demo/fast
+
+#=============================================================================
 # Target rules for targets named split_demo
 
 # Build rule for target.
@@ -165,6 +178,30 @@ examples/split_demo.s: examples/split_demo.c.s
 examples/split_demo.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/split_demo.dir/build.make CMakeFiles/split_demo.dir/examples/split_demo.c.s
 .PHONY : examples/split_demo.c.s
+
+examples/string_demo.o: examples/string_demo.c.o
+.PHONY : examples/string_demo.o
+
+# target to build an object file
+examples/string_demo.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/string_demo.dir/build.make CMakeFiles/string_demo.dir/examples/string_demo.c.o
+.PHONY : examples/string_demo.c.o
+
+examples/string_demo.i: examples/string_demo.c.i
+.PHONY : examples/string_demo.i
+
+# target to preprocess a source file
+examples/string_demo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/string_demo.dir/build.make CMakeFiles/string_demo.dir/examples/string_demo.c.i
+.PHONY : examples/string_demo.c.i
+
+examples/string_demo.s: examples/string_demo.c.s
+.PHONY : examples/string_demo.s
+
+# target to generate assembly for a file
+examples/string_demo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/string_demo.dir/build.make CMakeFiles/string_demo.dir/examples/string_demo.c.s
+.PHONY : examples/string_demo.c.s
 
 src/function.o: src/function.c.o
 .PHONY : src/function.o
@@ -272,9 +309,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... pp"
 	@echo "... split_demo"
+	@echo "... string_demo"
 	@echo "... examples/split_demo.o"
 	@echo "... examples/split_demo.i"
 	@echo "... examples/split_demo.s"
+	@echo "... examples/string_demo.o"
+	@echo "... examples/string_demo.i"
+	@echo "... examples/string_demo.s"
 	@echo "... src/function.o"
 	@echo "... src/function.i"
 	@echo "... src/function.s"

@@ -19,8 +19,14 @@ target_include_directories(pp PUBLIC
     ${PROJECT_SOURCE_DIR}/include
 )
 
-# Add the demo executable
+# Add the string demo executable
+add_executable(string_demo examples/string_demo.c)
+
+# Add the split demo executable
 add_executable(split_demo examples/split_demo.c)
+
+# Link the library to the demo executable
+target_link_libraries(string_demo PRIVATE pp)
 
 # Link the library to the demo executable
 target_link_libraries(split_demo PRIVATE pp)

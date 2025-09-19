@@ -144,5 +144,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/pp.dir/DependInfo.cmake"
+  "CMakeFiles/string_demo.dir/DependInfo.cmake"
   "CMakeFiles/split_demo.dir/DependInfo.cmake"
   )
