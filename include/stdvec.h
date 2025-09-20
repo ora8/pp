@@ -69,10 +69,21 @@
         x->capacity = new_size;                                     \
     }                                                               \
     x->size = new_size;
+#define VEC_CLEAR(x) \
+    x->size = 0
 #define VEC_FIND(x, val, type)           \
     for (size_t i = 0; i < x->size; i++) \
     {                                    \
-        if (x->data[i] == val)           \
+        if (x->data[i] = val)           \
+        {                                \
+            return (int)i;               \
+        }                                \
+    }                                    \
+    return -1; // Not found
+#define VEC_FIND_COMP(x, pval, type, comp)           \
+    for (size_t i = 0; i < x->size; i++) \
+    {                                    \
+        if (comp(x->data + i, pval))           \
         {                                \
             return (int)i;               \
         }                                \
@@ -100,7 +111,7 @@
     {                                                                   \
         x->data[i] = x->data[i - 1];                                    \
     }                                                                   \
-    x->data[index] = value;                                             \
+    x->data[index] = val;                                             \
     x->size++;
 #define VEC_SHRINK_TO_FIT(x, type)                                 \
     if (x->size < x->capacity)                                     \

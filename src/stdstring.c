@@ -7,18 +7,8 @@
 // String implementation
 // Created with Copilot
 //
-static const size_t __stack_mask = 0x01;
+static const unsigned char __stack_mask = 0x01;
 static const size_t __heap_mask = 0x1ul;
-
-static unsigned char stack_size(unsigned char masked_size)
-{
-    return masked_size >> 1;
-}
-
-static size_t heap_capacity(size_t capacity)
-{
-    return capacity & ~__heap_mask;
-}
 
 string *string_create(const char c_str[])
 {
@@ -41,7 +31,8 @@ void string_init(string *str, const char c_str[])
         str->stack.size = size << __stack_mask;
         return;
     }
-    str->heap.data = malloc(size + 1);
+    size_t capacity = size % 2 == 0 ? size + 2 : size + 1;
+    str->heap.data = malloc(capacity);
     if (!str->heap.data)
     {
         exit(EXIT_FAILURE);
@@ -49,13 +40,18 @@ void string_init(string *str, const char c_str[])
     memcpy(str->heap.data, c_str, size);
     str->heap.data[size] = '\0';
     str->heap.size = size;
-    str->heap.capacity = (size + 1) | __heap_mask;
+    str->heap.capacity = capacity | __heap_mask;
     str->stack.size |= __stack_mask; // Mark as heap
+}
+
+static int string_stack_used(const string *str)
+{
+    return (str->stack.size & __stack_mask) == 0;
 }
 
 void string_finit(string *str)
 {
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         str->stack.data[0] = '\0';
         str->stack.size = 0;
@@ -74,7 +70,7 @@ void string_destroy(string *str)
 
 void string_clear(string *str)
 {
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         str->stack.data[0] = '\0';
         str->stack.size = 0;
@@ -84,29 +80,49 @@ void string_clear(string *str)
     str->heap.size = 0;
 }
 
+static size_t string_stack_size(const string *str)
+{
+    return (size_t)str->stack.size >> 1;
+}
+
 size_t string_size(const string *str)
 
 {
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
-        return str->stack.size >> 1;
+        return string_stack_size(str);
     }
     return str->heap.size;
 }
 
 const char *string_c_str(const string *str)
 {
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         return str->stack.data;
     }
     return str->heap.data;
 }
 
+static size_t string_heap_capacity(const string *str)
+{
+    return str->heap.capacity & ~__heap_mask;
+}
+
+size_t string_capacity(const string *str)
+{
+    if (string_stack_used(str))
+    {
+        return sizeof(str->stack.data);
+    }
+    //
+    return string_heap_capacity(str);
+}
+
 void string_push_back(string *str, char c)
 {
     size_t size;
-    if ((str->stack.size & __stack_mask) == 0 && str->stack.size + 1 < sizeof(str->stack.data))
+    if (string_stack_used(str) && str->stack.size + 1 < sizeof(str->stack.data))
     {
         size = str->stack.size;
         str->stack.data[size] = c;
@@ -116,7 +132,7 @@ void string_push_back(string *str, char c)
     }
 
     size = str->heap.size;
-    size_t capacity = str->heap.capacity & ~__heap_mask;
+    size_t capacity = string_heap_capacity(str);
     if (size + 1 >= capacity)
     {
         size_t new_capacity = (capacity == 0) ? 2 : 2 * capacity;
@@ -131,7 +147,7 @@ void string_push_back(string *str, char c)
 char string_pop_back(string *str)
 {
     char c;
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         c = str->stack.data[str->stack.size - 1];
         str->stack.data[str->stack.size - 1] = '\0';
@@ -147,7 +163,7 @@ char string_pop_back(string *str)
 void string_reserve(string *str, size_t new_capacity)
 {
     // If currently using stack storage
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         if (new_capacity < sizeof(str->stack.data))
         {
@@ -155,6 +171,10 @@ void string_reserve(string *str, size_t new_capacity)
             return;
         }
         // Move from stack to heap
+        if (new_capacity % 2 == 0)
+        {
+            new_capacity++;
+        }
         char *new_data = malloc(new_capacity);
         if (!new_data)
         {
@@ -169,7 +189,11 @@ void string_reserve(string *str, size_t new_capacity)
     }
 
     // Already using heap storage
-    size_t capacity = str->heap.capacity & ~__heap_mask;
+    size_t capacity = string_heap_capacity(str);
+    if (new_capacity % 2 == 0)
+    {
+        new_capacity++;
+    }
     if (new_capacity <= capacity)
     {
         // Already enough capacity
@@ -186,7 +210,7 @@ void string_reserve(string *str, size_t new_capacity)
 
 void string_resize(string *str, size_t new_size)
 {
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         // Currently using stack
         if (new_size < sizeof(str->stack.data))
@@ -214,7 +238,7 @@ void string_resize(string *str, size_t new_size)
         return;
     }
     // Already using heap
-    if (new_size > (str->heap.capacity & ~__heap_mask) - 1)
+    if (new_size > string_heap_capacity(str) - 1)
     {
         string_reserve(str, new_size + 1);
     }
@@ -234,7 +258,7 @@ int string_valid_index(const string *str, size_t index)
 
 char string_get(const string *str, size_t index)
 {
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         return str->stack.data[index];
     }
@@ -243,7 +267,7 @@ char string_get(const string *str, size_t index)
 
 void string_set(string *str, size_t index, char c)
 {
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         str->stack.data[index] = c;
         return;
@@ -254,7 +278,7 @@ void string_set(string *str, size_t index, char c)
 int string_find(const string *str, char c)
 {
     size_t size = string_size(str);
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         for (size_t i = 0; i < size; ++i)
         {
@@ -277,7 +301,7 @@ void string_remove(string *str, size_t index)
 {
     size_t size = string_size(str);
 
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         // Stack storage
         for (size_t i = index; i < size - 1; ++i)
@@ -299,11 +323,11 @@ void string_remove(string *str, size_t index)
     }
 }
 
-void string_insert(string *str, size_t index, char c)
+void string_insert_char(string *str, size_t index, char c)
 {
     size_t size = string_size(str);
 
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         // Stack storage
         if (size + 1 < sizeof(str->stack.data))
@@ -338,9 +362,54 @@ void string_insert(string *str, size_t index, char c)
     str->heap.size++;
 }
 
+static void string_insert_str_ex(string *str, size_t index, const char *s, size_t ssize)
+{
+    size_t size = string_size(str);
+    if (string_stack_used(str))
+    {
+        // Stack storage
+        if (size + ssize < sizeof(str->stack.data))
+        {
+            // Shift right to make space
+            memmove(str->stack.data + index + ssize, str->stack.data + index, size - index + 1); // +1 for null
+            memmove(str->stack.data + index, s, ssize);
+            size_t new_size = (str->stack.size >> 1) + ssize;
+            str->stack.size = (new_size + ssize) << 1;
+            return;
+        }
+        // Need to move to heap
+        string_reserve(str, size + ssize);
+        // Copy stack to heap
+        memmove(str->heap.data, str->stack.data, index);
+        memmove(str->heap.data + index, s, ssize);
+        memmove(str->heap.data + index + ssize, str->stack.data + index, size - index + 1); // +1 for null
+        str->heap.size = size + ssize;
+        str->stack.size |= __stack_mask; // Mark as heap
+        return;
+    }
+    // Heap storage
+    if (size + ssize >= (str->heap.capacity & ~__heap_mask))
+    {
+        string_reserve(str, ssize);
+    }
+    memmove(str->heap.data + index + ssize, str->heap.data + index, size - index + 1); // +1 for null
+    memmove(str->heap.data + index, s, ssize);
+    str->heap.size = size + ssize;
+}
+
+void string_insert_str(string *str, size_t index, const char *s)
+{
+    string_insert_str_ex(str, index, s, strlen(s));
+}
+
+void string_insert_string(string *str, size_t index, const string *str2)
+{
+    string_insert_str_ex(str, index, string_c_str(str2), string_size(str2));
+}
+
 void string_shrink_to_fit(string *str)
 {
-    if ((str->stack.size & __stack_mask) == 0)
+    if (string_stack_used(str))
     {
         // Stack storage, nothing to shrink
         return;
@@ -368,7 +437,7 @@ void string_swap(string *str1, string *str2)
 void string_copy(string *dest, const string *src)
 {
     size_t src_size = string_size(src);
-    if ((src->stack.size & __stack_mask) == 0)
+    if (string_stack_used(src))
     {
         // Source is stack
         if (src_size < sizeof(dest->stack.data))
@@ -406,7 +475,7 @@ void string_concat(string *dest, const string *src)
     }
 
     // Ensure enough capacity
-    if ((dest->stack.size & __stack_mask) == 0)
+    if (string_stack_used(dest))
     {
         // dest is stack
         if (dest_size + src_size < sizeof(dest->stack.data))

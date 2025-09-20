@@ -155,6 +155,19 @@ split_demo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/split_demo.dir/build.make CMakeFiles/split_demo.dir/build
 .PHONY : split_demo/fast
 
+#=============================================================================
+# Target rules for targets named str_demo
+
+# Build rule for target.
+str_demo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 str_demo
+.PHONY : str_demo
+
+# fast build rule for target.
+str_demo/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/str_demo.dir/build.make CMakeFiles/str_demo.dir/build
+.PHONY : str_demo/fast
+
 examples/split_demo.o: examples/split_demo.c.o
 .PHONY : examples/split_demo.o
 
@@ -178,6 +191,30 @@ examples/split_demo.s: examples/split_demo.c.s
 examples/split_demo.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/split_demo.dir/build.make CMakeFiles/split_demo.dir/examples/split_demo.c.s
 .PHONY : examples/split_demo.c.s
+
+examples/str_demo.o: examples/str_demo.c.o
+.PHONY : examples/str_demo.o
+
+# target to build an object file
+examples/str_demo.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/str_demo.dir/build.make CMakeFiles/str_demo.dir/examples/str_demo.c.o
+.PHONY : examples/str_demo.c.o
+
+examples/str_demo.i: examples/str_demo.c.i
+.PHONY : examples/str_demo.i
+
+# target to preprocess a source file
+examples/str_demo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/str_demo.dir/build.make CMakeFiles/str_demo.dir/examples/str_demo.c.i
+.PHONY : examples/str_demo.c.i
+
+examples/str_demo.s: examples/str_demo.c.s
+.PHONY : examples/str_demo.s
+
+# target to generate assembly for a file
+examples/str_demo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/str_demo.dir/build.make CMakeFiles/str_demo.dir/examples/str_demo.c.s
+.PHONY : examples/str_demo.c.s
 
 examples/string_demo.o: examples/string_demo.c.o
 .PHONY : examples/string_demo.o
@@ -226,6 +263,30 @@ src/function.s: src/function.c.s
 src/function.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/function.c.s
 .PHONY : src/function.c.s
+
+src/stdstr.o: src/stdstr.c.o
+.PHONY : src/stdstr.o
+
+# target to build an object file
+src/stdstr.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdstr.c.o
+.PHONY : src/stdstr.c.o
+
+src/stdstr.i: src/stdstr.c.i
+.PHONY : src/stdstr.i
+
+# target to preprocess a source file
+src/stdstr.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdstr.c.i
+.PHONY : src/stdstr.c.i
+
+src/stdstr.s: src/stdstr.c.s
+.PHONY : src/stdstr.s
+
+# target to generate assembly for a file
+src/stdstr.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdstr.c.s
+.PHONY : src/stdstr.c.s
 
 src/stdstring.o: src/stdstring.c.o
 .PHONY : src/stdstring.o
@@ -309,16 +370,23 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... pp"
 	@echo "... split_demo"
+	@echo "... str_demo"
 	@echo "... string_demo"
 	@echo "... examples/split_demo.o"
 	@echo "... examples/split_demo.i"
 	@echo "... examples/split_demo.s"
+	@echo "... examples/str_demo.o"
+	@echo "... examples/str_demo.i"
+	@echo "... examples/str_demo.s"
 	@echo "... examples/string_demo.o"
 	@echo "... examples/string_demo.i"
 	@echo "... examples/string_demo.s"
 	@echo "... src/function.o"
 	@echo "... src/function.i"
 	@echo "... src/function.s"
+	@echo "... src/stdstr.o"
+	@echo "... src/stdstr.i"
+	@echo "... src/stdstr.s"
 	@echo "... src/stdstring.o"
 	@echo "... src/stdstring.i"
 	@echo "... src/stdstring.s"

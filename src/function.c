@@ -17,6 +17,7 @@ void string_view_split_1(string_view_vec *vec, const char *str, char delimiter)
         }
     }
 }
+
 void string_view_split_2(string_view_vec *vec, const char *str, const char *delimiter)
 {
     size_t start = 0;

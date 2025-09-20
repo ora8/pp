@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include "stdstring_view.h"
 
 //
@@ -69,75 +71,99 @@ string_view_vec *string_view_vec_create()
 
 void string_view_vec_init(string_view_vec *vec)
 {
-    ptr_vec_init(vec);
+    VEC_INIT(vec);
 }
 
 void string_view_vec_finit(string_view_vec *vec)
 {
-    ptr_vec_finit(vec);
-
+    VEC_FINIT(vec);
 }
+
 void string_view_vec_destroy(string_view_vec *vec)
 {
-    ptr_vec_destroy(vec);
+    VEC_DESTROY(vec);
 }
+
 void string_view_vec_push_back(string_view_vec *vec, string_view *p_value)
 {
-    ptr_vec_push_back(vec, (void *)p_value);
+    VEC_PUSH_BACK(vec, *p_value, string_view);
 }
+
 void string_view_vec_pop_back(string_view_vec *vec)
 {
-    ptr_vec_pop_back(vec);
+    VEC_POP_BACK(vec);
 }
-string_view *string_view_vec_get(const string_view_vec *vec, size_t index)
+
+string_view string_view_vec_get(const string_view_vec *vec, size_t index)
 {
-    return (string_view *)ptr_vec_get(vec, index);
+    VEC_GET(vec, index);
 }
+
 void string_view_vec_set(string_view_vec *vec, size_t index, string_view *p_value)
 {
-    ptr_vec_set(vec, index, (void *)p_value);
+    VEC_SET(vec, index, *p_value);
 }
+
 size_t string_view_vec_size(const string_view_vec *vec)
 {
-    return ptr_vec_size(vec);
+    VEC_SIZE(vec);
 }
+
 void string_view_vec_reserve(string_view_vec *vec, size_t new_capacity)
 {
-    ptr_vec_reserve(vec, new_capacity);
+    VEC_RESERVE(vec, new_capacity, string_view);
 }
+
 void string_view_vec_resize(string_view_vec *vec, size_t new_size)
 {
-    ptr_vec_resize(vec, new_size);
+    VEC_RESIZE(vec, new_size, string_view);
 }
+
 void string_view_vec_clear(string_view_vec *vec)
 {
-    ptr_vec_clear(vec);
+    VEC_CLEAR(vec);
 }
+
+int string_view_vec_compare(const string_view *sv1, const string_view *sv2)
+{
+    if (sv1->size != sv2->size)
+    {
+        return 0;
+    }
+    return memcmp(sv1->c_str, sv2->c_str, sv1->size);
+}
+
 int string_view_vec_find(const string_view_vec *vec, string_view *p_value)
 {
-    return ptr_vec_find(vec, (void *)p_value);
+    VEC_FIND_COMP(vec, p_value, string_view, string_view_vec_compare);
 }
+
 void string_view_vec_remove(string_view_vec *vec, size_t index)
 {
-    ptr_vec_remove(vec, index);
+    VEC_REMOVE(vec, index);
 }
+
 void string_view_vec_insert(string_view_vec *vec, size_t index, string_view *p_value)
 {
-    ptr_vec_insert(vec, index, (void *)p_value);
-}
+    VEC_INSERT(vec, index, *p_value, string_view);
+ }
+
 void string_view_vec_reverse(string_view_vec *vec)
 {
-    ptr_vec_reverse(vec);
+    VEC_REVERSE(vec, string_view);
 }
+
 void string_view_vec_shrink_to_fit(string_view_vec *vec)
 {
-    ptr_vec_shrink_to_fit(vec);
+    VEC_SHRINK_TO_FIT(vec, string_view);
 }
+
 void string_view_vec_swap(string_view_vec *vec1, string_view_vec *vec2)
 {
-    ptr_vec_swap(vec1, vec2);
+    VEC_SWAP(vec1, vec2, string_view_vec);
 }
+
 void string_view_vec_copy(const string_view_vec *src, string_view_vec *dest)
 {
-    ptr_vec_copy(src, dest);
+    VEC_COPY(src, dest, string_view_vec);
 }

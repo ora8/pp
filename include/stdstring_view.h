@@ -22,11 +22,16 @@ const char *string_view_c_str(const string_view *sv);
 int string_view_valid_index(const string_view *sv, size_t index);
 char string_view_get(const string_view *sv, size_t index);
 int string_view_find(const string_view *sv, char c);                                
+int string_view_vec_compare(const string_view *sv1, const string_view *sv2);
 
 //
 // Vector of string_view declaration
 //
-typedef ptr_vec string_view_vec;
+typedef struct {
+    string_view *data;
+    size_t size;
+    size_t capacity;    
+} string_view_vec;
 
 string_view_vec *string_view_vec_create();
 void string_view_vec_init(string_view_vec *vec);
@@ -34,7 +39,7 @@ void string_view_vec_finit(string_view_vec *vec);
 void string_view_vec_destroy(string_view_vec *vec);
 void string_view_vec_push_back(string_view_vec *vec, string_view *p_value);
 void string_view_vec_pop_back(string_view_vec *vec);
-string_view *string_view_vec_get(const string_view_vec *vec, size_t index);
+string_view string_view_vec_get(const string_view_vec *vec, size_t index);
 void string_view_vec_set(string_view_vec *vec, size_t index, string_view *p_value);
 size_t string_view_vec_size(const string_view_vec *vec);
 size_t string_view_vec_capacity(const string_view_vec *vec);

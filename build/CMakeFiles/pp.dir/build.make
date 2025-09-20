@@ -128,12 +128,27 @@ CMakeFiles/pp.dir/src/function.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/pp.dir/src/function.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/urs-wagner/pp/src/function.c -o CMakeFiles/pp.dir/src/function.c.s
 
+CMakeFiles/pp.dir/src/stdstr.c.o: CMakeFiles/pp.dir/flags.make
+CMakeFiles/pp.dir/src/stdstr.c.o: /home/urs-wagner/pp/src/stdstr.c
+CMakeFiles/pp.dir/src/stdstr.c.o: CMakeFiles/pp.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/urs-wagner/pp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/pp.dir/src/stdstr.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/pp.dir/src/stdstr.c.o -MF CMakeFiles/pp.dir/src/stdstr.c.o.d -o CMakeFiles/pp.dir/src/stdstr.c.o -c /home/urs-wagner/pp/src/stdstr.c
+
+CMakeFiles/pp.dir/src/stdstr.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/pp.dir/src/stdstr.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/urs-wagner/pp/src/stdstr.c > CMakeFiles/pp.dir/src/stdstr.c.i
+
+CMakeFiles/pp.dir/src/stdstr.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/pp.dir/src/stdstr.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/urs-wagner/pp/src/stdstr.c -o CMakeFiles/pp.dir/src/stdstr.c.s
+
 # Object files for target pp
 pp_OBJECTS = \
 "CMakeFiles/pp.dir/src/stdvec.c.o" \
 "CMakeFiles/pp.dir/src/stdstring.c.o" \
 "CMakeFiles/pp.dir/src/stdstring_view.c.o" \
-"CMakeFiles/pp.dir/src/function.c.o"
+"CMakeFiles/pp.dir/src/function.c.o" \
+"CMakeFiles/pp.dir/src/stdstr.c.o"
 
 # External object files for target pp
 pp_EXTERNAL_OBJECTS =
@@ -142,9 +157,10 @@ libpp.a: CMakeFiles/pp.dir/src/stdvec.c.o
 libpp.a: CMakeFiles/pp.dir/src/stdstring.c.o
 libpp.a: CMakeFiles/pp.dir/src/stdstring_view.c.o
 libpp.a: CMakeFiles/pp.dir/src/function.c.o
+libpp.a: CMakeFiles/pp.dir/src/stdstr.c.o
 libpp.a: CMakeFiles/pp.dir/build.make
 libpp.a: CMakeFiles/pp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/urs-wagner/pp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C static library libpp.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/urs-wagner/pp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libpp.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/pp.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pp.dir/link.txt --verbose=$(VERBOSE)
 

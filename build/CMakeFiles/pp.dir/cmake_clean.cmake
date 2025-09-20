@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/pp.dir/src/function.c.o"
   "CMakeFiles/pp.dir/src/function.c.o.d"
+  "CMakeFiles/pp.dir/src/stdstr.c.o"
+  "CMakeFiles/pp.dir/src/stdstr.c.o.d"
   "CMakeFiles/pp.dir/src/stdstring.c.o"
   "CMakeFiles/pp.dir/src/stdstring.c.o.d"
   "CMakeFiles/pp.dir/src/stdstring_view.c.o"

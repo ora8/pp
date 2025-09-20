@@ -69,7 +69,7 @@ void char_vec_resize(char_vec *vec, size_t new_size)
 
 void char_vec_clear(char_vec *vec)
 {
-    vec->size = 0;
+    VEC_CLEAR(vec);
 }
 
 int char_vec_find(const char_vec *vec, char value)
