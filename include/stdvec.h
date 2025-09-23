@@ -6,11 +6,11 @@
 #define VEC_CREATE(type) \
     type *vec = malloc(sizeof(type)); \
     VEC_INIT(vec); \
-    return vec;
+    return vec
 #define VEC_INIT(x) \
     x->data = NULL; \
     x->size = 0;    \
-    x->capacity = 0;
+    x->capacity = 0
 #define VEC_FINIT(x)   \
     if (x->data)       \
     {                  \
@@ -18,10 +18,10 @@
     }                  \
     x->data = NULL;    \
     x->size = 0;       \
-    x->capacity = 0;
+    x->capacity = 0
 #define VEC_DESTROY(x) \
-    VEC_FINIT(x)       \
-    free(x);
+    VEC_FINIT(x);      \
+    free(x)
 #define VEC_PUSH_BACK(x, val, type)                                     \
     if (x->size >= x->capacity)                                         \
     {                                                                   \
@@ -43,7 +43,7 @@
 #define VEC_VALID_INDEX(x, index) return (0 <= index && index < x->size)
 #define VEC_GET(x, index) return (x->data[index])
 #define VEC_SET(x, index, val) \
-    x->data[index] = val;
+    x->data[index] = val
 #define VEC_SIZE(x) (x->size)
 #define VEC_CAPACITY(x) (x->capacity)
 #define VEC_RESERVE(x, new_cap, type)                              \
@@ -68,9 +68,11 @@
         x->data = new_data;                                         \
         x->capacity = new_size;                                     \
     }                                                               \
-    x->size = new_size;
+    x->size = new_size
 #define VEC_CLEAR(x) \
     x->size = 0
+#define VEC_EMPTY(x) \
+    x->size == 0
 #define VEC_FIND(x, val, type)           \
     for (size_t i = 0; i < x->size; i++) \
     {                                    \
@@ -79,7 +81,7 @@
             return (int)i;               \
         }                                \
     }                                    \
-    return -1; // Not found
+    return -1    // Not found
 #define VEC_FIND_COMP(x, pval, type, comp)           \
     for (size_t i = 0; i < x->size; i++) \
     {                                    \
@@ -88,13 +90,13 @@
             return (int)i;               \
         }                                \
     }                                    \
-    return -1; // Not found
+    return -1    // Not found
 #define VEC_REMOVE(x, index)                     \
     for (size_t i = index; i < x->size - 1; i++) \
     {                                            \
         x->data[i] = x->data[i + 1];             \
     }                                            \
-    x->size--;
+    x->size--
 #define VEC_INSERT(x, index, val, type)                                 \
     if (x->size >= x->capacity)                                         \
     {                                                                   \
@@ -112,7 +114,7 @@
         x->data[i] = x->data[i - 1];                                    \
     }                                                                   \
     x->data[index] = val;                                             \
-    x->size++;
+    x->size++
 #define VEC_SHRINK_TO_FIT(x, type)                                 \
     if (x->size < x->capacity)                                     \
     {                                                              \
@@ -130,7 +132,7 @@
         *x = *y;             \
         *y = temp;           \
     }
-#define VEC_COPY(src, dest, type)                          \
+#define VEC_COPY(dest, src, type)                          \
     {                                                      \
         if (dest->data)                                    \
         {                                                  \
@@ -153,6 +155,14 @@
             dest->capacity = src->size;                    \
         }                                                  \
     }
+#define VEC_MOVE(dst,src) \
+       if (dest->data)                                    \
+        {                                                  \
+            free(dest->data);                              \
+        }                                                  \
+        dest->size = src->size;                            \
+        dest->capacity = src->capacity;                    \
+        dest->data = src->data
 #define VEC_REVERSE(x, type)                \
     {                                       \
         size_t left = 0;                    \
@@ -197,7 +207,8 @@ void char_vec_insert(char_vec *vec, size_t index, char value);
 void char_vec_reverse(char_vec *vec);
 void char_vec_shrink_to_fit(char_vec *vec);
 void char_vec_swap(char_vec *vec1, char_vec *vec2);
-void char_vec_copy(const char_vec *src, char_vec *dest);
+void char_vec_copy(char_vec *dest, const char_vec *src);
+void char_vec_move(char_vec *dest, const char_vec *src);
 
 //
 // Vector declaration for int members
@@ -228,7 +239,8 @@ void int_vec_insert(int_vec *vec, size_t index, int value);
 void int_vec_reverse(int_vec *vec);
 void int_vec_shrink_to_fit(int_vec *vec);
 void int_vec_swap(int_vec *vec1, int_vec *vec2);
-void int_vec_copy(const int_vec *src, int_vec *dest);
+void int_vec_copy(int_vec *dest, const int_vec *src);
+void int_vec_move(int_vec *dest, const int_vec *src);
 
 //
 // Vector declaration for double members
@@ -259,7 +271,8 @@ void double_vec_insert(double_vec *vec, size_t index, double value);
 void double_vec_reverse(double_vec *vec);
 void double_vec_shrink_to_fit(double_vec *vec);
 void double_vec_swap(double_vec *vec1, double_vec *vec2);
-void double_vec_copy(const double_vec *src, double_vec *dest);
+void double_vec_copy(double_vec *dest, const double_vec *src);
+void double_vec_move(double_vec *dest, const double_vec *src);
 
 //
 // Vector declaration for pointer members
@@ -290,4 +303,5 @@ void ptr_vec_insert(ptr_vec *vec, size_t index, void *value);
 void ptr_vec_reverse(ptr_vec *vec);
 void ptr_vec_shrink_to_fit(ptr_vec *vec);
 void ptr_vec_swap(ptr_vec *vec1, ptr_vec *vec2);
-void ptr_vec_copy(const ptr_vec *src, ptr_vec *dest);
+void ptr_vec_copy(ptr_vec *dest, const ptr_vec *src);
+void ptr_vec_move(ptr_vec *dest, const ptr_vec *src);

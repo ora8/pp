@@ -52,4 +52,5 @@ void string_view_vec_insert(string_view_vec *vec, size_t index, string_view *p_v
 void string_view_vec_reverse(string_view_vec *vec);
 void string_view_vec_shrink_to_fit(string_view_vec *vec);
 void string_view_vec_swap(string_view_vec *vec1, string_view_vec *vec2);
-void string_view_vec_copy(const string_view_vec *src, string_view_vec *dest);
+void string_view_vec_copy(string_view_vec *dest, const string_view_vec *src);
+void string_view_vec_move(string_view_vec *dest, const string_view_vec *src);

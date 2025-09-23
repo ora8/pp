@@ -80,9 +80,9 @@ void string_clear(string *str)
     str->heap.size = 0;
 }
 
-static size_t string_stack_size(const string *str)
+int string_empty(const string *str)
 {
-    return (size_t)str->stack.size >> 1;
+    return string_size(str) == 0ul;
 }
 
 size_t string_size(const string *str)
@@ -90,7 +90,7 @@ size_t string_size(const string *str)
 {
     if (string_stack_used(str))
     {
-        return string_stack_size(str);
+        return (size_t)str->stack.size >> 1;
     }
     return str->heap.size;
 }
@@ -461,6 +461,24 @@ void string_copy(string *dest, const string *src)
         dest->heap.size = src_size;
         dest->stack.size |= __stack_mask; // Mark as heap
         return;
+    }
+}
+
+void string_move(string *dest, string *src)
+{
+    if (!string_stack_used(dest)) {
+        free(dest->heap.data);
+    }
+    if (string_stack_used(src)) {
+        unsigned char size = src->stack.size;
+        memcpy(dest->stack.data, src->stack.data, size + 1);
+        dest->stack.size = size;
+    }
+    else {
+        size_t size = src->heap.size;
+        string_reserve(dest, size);
+        memcpy(dest->heap.data, src->heap.data, size + 1);
+        dest->heap.size = size;
     }
 }
 

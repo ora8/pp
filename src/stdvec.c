@@ -97,9 +97,14 @@ void char_vec_swap(char_vec *vec1, char_vec *vec2)
     VEC_SWAP(vec1, vec2, char_vec);
 }
 
-void char_vec_copy(const char_vec *src, char_vec *dest)
+void char_vec_copy(char_vec *dest, const char_vec *src)
 {
-    VEC_COPY(src, dest, char);
+    VEC_COPY(dest, src, char);
+}
+
+void char_vec_move(char_vec *dest, const char_vec *src)
+{
+    VEC_MOVE(dest, src);
 }
 
 void char_vec_reverse(char_vec *vec)
@@ -171,9 +176,14 @@ void int_vec_swap(int_vec *vec1, int_vec *vec2)
     VEC_SWAP(vec1, vec2, int_vec);
 }
 
-void int_vec_copy(const int_vec *src, int_vec *dest)
+void int_vec_copy(int_vec *dest, const int_vec *src)
 {
-    VEC_COPY(src, dest, int);
+    VEC_COPY(dest, src, int);
+}
+
+void int_vec_move(int_vec *dest, const int_vec *src)
+{
+    VEC_MOVE(dest, src);
 }
 
 void int_vec_reverse(int_vec *vec)
@@ -283,10 +293,15 @@ void double_vec_swap(double_vec *vec1, double_vec *vec2)
 {
     VEC_SWAP(vec1, vec2, double_vec);
 }
-void double_vec_copy(const double_vec *src, double_vec *dest)  
+void double_vec_copy(double_vec *dest, const double_vec *src)  
 {
-    VEC_COPY(src, dest, double);
+    VEC_COPY(dest, src, double);
 } 
+
+void double_vec_move(double_vec *dest, const double_vec *src)
+{
+    VEC_MOVE(dest, src);
+}
 
 //
 // Vector implementation for pointer members
@@ -353,7 +368,7 @@ void ptr_vec_resize(ptr_vec *vec, size_t new_size)
 
 void ptr_vec_clear(ptr_vec *vec)    
 {
-    vec->size = 0;
+    VEC_CLEAR(vec);
 }
 
 int ptr_vec_find(const ptr_vec *vec, void *value)   
@@ -386,7 +401,12 @@ void ptr_vec_swap(ptr_vec *vec1, ptr_vec *vec2)
     VEC_SWAP(vec1, vec2, ptr_vec);
 }   
 
-void ptr_vec_copy(const ptr_vec *src, ptr_vec *dest) 
+void ptr_vec_copy(ptr_vec *dest, const ptr_vec *src) 
 {
-    VEC_COPY(src, dest, void*);
+    VEC_COPY(dest, src, void*);
+}
+
+void ptr_vec_move(ptr_vec *dest, const ptr_vec *src)
+{
+    VEC_MOVE(dest, src);
 }

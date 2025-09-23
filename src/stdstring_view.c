@@ -163,7 +163,12 @@ void string_view_vec_swap(string_view_vec *vec1, string_view_vec *vec2)
     VEC_SWAP(vec1, vec2, string_view_vec);
 }
 
-void string_view_vec_copy(const string_view_vec *src, string_view_vec *dest)
+void string_view_vec_copy(string_view_vec *dest, const string_view_vec *src)
 {
-    VEC_COPY(src, dest, string_view_vec);
+    VEC_COPY(dest, src, string_view_vec);
+}
+
+void string_view_vec_move(string_view_vec *dest, const string_view_vec *src)
+{
+    VEC_MOVE(dest, src);
 }
