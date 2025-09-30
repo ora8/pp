@@ -1,1 +1,0 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/conv_demo.dir/link.d CMakeFiles/conv_demo.dir/examples/conv_demo.c.o -o conv_demo  libpp.a

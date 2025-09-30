@@ -1,1 +1,0 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/string_demo.dir/link.d CMakeFiles/string_demo.dir/examples/string_demo.c.o -o string_demo  libpp.a

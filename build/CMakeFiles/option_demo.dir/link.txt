@@ -1,1 +1,0 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/option_demo.dir/link.d CMakeFiles/option_demo.dir/examples/option_demo.c.o -o option_demo  libpp.a
