@@ -10,6 +10,7 @@ CMakeFiles/pp.dir/src/stdstring_view.c.o: \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
+ /home/urs-wagner/pp/include/stdarray.h \
  /home/urs-wagner/pp/include/stdstring_view.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \

@@ -6,15 +6,15 @@ typedef union
 {
     struct 
     {
-        unsigned char size;
-        char data[23];
-    } stack;
+        unsigned char _size;
+        char _data[23];
+    } _stack;
     struct
     {
-        size_t capacity;
-        size_t size;
-        char *data;
-    } heap;
+        size_t _capacity;
+        size_t _size;
+        char *_data;
+    } _heap;
 } string;
 
 string *string_create(const char c_str[]);
@@ -36,10 +36,10 @@ void string_set(string *str, size_t index, char c);
 int string_find(const string *str, char c);
 void string_remove(string *str, size_t index);
 void string_insert_char(string *str, size_t index, char c);
-void string_insert_str(string *str, size_t index, const char *s);
+void string_insert_str(string *str, size_t index, const char s[]);
 void string_insert_string(string *str, size_t index, const string *str2);
 void string_shrink_to_fit(string *str);
 void string_swap(string *str1, string *str2);
-void string_copy(string *dest, const string *src);
-void string_move(string *dest, string *src);
-void string_concat(string *dest, const string *src);
+void string_clone(string *dst, const string *src);
+void string_move(string *dst, string *src);
+void string_concat(string *dst, const string *src);

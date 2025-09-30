@@ -54,7 +54,7 @@ void char_vec_set(char_vec *vec, size_t index, char value)
 
 size_t char_vec_size(const char_vec *vec)
 {
-    return vec->size;
+    VEC_SIZE(vec);
 }
 
 void char_vec_reserve(char_vec *vec, size_t new_capacity)
@@ -251,11 +251,11 @@ void double_vec_set(double_vec *vec, size_t index, double value)
 }
 size_t double_vec_size(const double_vec *vec)
 {
-    return vec->size;
+    VEC_SIZE(vec);
 }
 size_t double_vec_capacity(const double_vec *vec)
 {
-    return vec->capacity;
+    VEC_CAPACITY(vec);
 }
 void double_vec_reserve(double_vec *vec, size_t new_capacity)
 {
@@ -267,7 +267,7 @@ void double_vec_resize(double_vec *vec, size_t new_size)
 }
 void double_vec_clear(double_vec *vec) 
 {
-    vec->size = 0;
+    VEC_CLEAR(vec);
 }
 int double_vec_find(const double_vec *vec, double value)
 {
@@ -299,114 +299,6 @@ void double_vec_copy(double_vec *dest, const double_vec *src)
 } 
 
 void double_vec_move(double_vec *dest, const double_vec *src)
-{
-    VEC_MOVE(dest, src);
-}
-
-//
-// Vector implementation for pointer members
-//
-ptr_vec *ptr_vec_create()
-{
-    VEC_CREATE(ptr_vec);
-}
-
-void ptr_vec_init(ptr_vec *vec)
-{
-    VEC_INIT(vec);
-}
-
-void ptr_vec_finit(ptr_vec *vec)
-{
-    VEC_FINIT(vec);
-}
-
-void ptr_vec_destroy(ptr_vec *vec)  
-{
-    VEC_DESTROY(vec);
-}
-
-void ptr_vec_push_back(ptr_vec *vec, void *value)   
-{
-    VEC_PUSH_BACK(vec, value, void*);
-}
-
-void ptr_vec_pop_back(ptr_vec *vec) 
-{
-    VEC_POP_BACK(vec);
-}
-
-void *ptr_vec_get(const ptr_vec *vec, size_t index) 
-{
-    VEC_GET(vec, index);
-}
-
-void ptr_vec_set(ptr_vec *vec, size_t index, void *value)     
-{
-    VEC_SET(vec, index, value);
-}
-
-size_t ptr_vec_size(const ptr_vec *vec)     
-{
-    return vec->size;
-}
-
-size_t ptr_vec_capacity(const ptr_vec *vec)     
-{
-    return vec->capacity;
-}
-
-void ptr_vec_reserve(ptr_vec *vec, size_t new_capacity) 
-{
-    VEC_RESERVE(vec, new_capacity, void*);
-}
-
-void ptr_vec_resize(ptr_vec *vec, size_t new_size)
-{
-    VEC_RESIZE(vec, new_size, void*);
-}
-
-void ptr_vec_clear(ptr_vec *vec)    
-{
-    VEC_CLEAR(vec);
-}
-
-int ptr_vec_find(const ptr_vec *vec, void *value)   
-{
-    VEC_FIND(vec, value, void*);
-}
-
-void ptr_vec_remove(ptr_vec *vec, size_t index) 
-{
-    VEC_REMOVE(vec, index);
-}
-
-void ptr_vec_insert(ptr_vec *vec, size_t index, void *value)    
-{
-    VEC_INSERT(vec, index, value, void*);
-}
-
-void ptr_vec_reverse(ptr_vec *vec)  
-{
-    VEC_REVERSE(vec, void*);
-}
-
-void ptr_vec_shrink_to_fit(ptr_vec *vec)    
-{
-    VEC_SHRINK_TO_FIT(vec, void*);
-}
-
-void ptr_vec_swap(ptr_vec *vec1, ptr_vec *vec2)   
-{
-    VEC_SWAP(vec1, vec2, ptr_vec);
-}   
-
-void ptr_vec_copy(ptr_vec *dest, const ptr_vec *src) 
-{
-    VEC_COPY(dest, src, void*);
-}
-
-void ptr_vec_move(ptr_vec *dest, const ptr_vec *src)
 {
     VEC_MOVE(dest, src);
 }

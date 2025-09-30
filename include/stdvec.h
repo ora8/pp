@@ -8,123 +8,123 @@
     VEC_INIT(vec); \
     return vec
 #define VEC_INIT(x) \
-    x->data = NULL; \
-    x->size = 0;    \
-    x->capacity = 0
+    x->_data = NULL; \
+    x->_size = 0;    \
+    x->_capacity = 0
 #define VEC_FINIT(x)   \
-    if (x->data)       \
+    if (x->_data)       \
     {                  \
-        free(x->data); \
+        free(x->_data); \
     }                  \
-    x->data = NULL;    \
-    x->size = 0;       \
-    x->capacity = 0
+    x->_data = NULL;    \
+    x->_size = 0;       \
+    x->_capacity = 0
 #define VEC_DESTROY(x) \
     VEC_FINIT(x);      \
     free(x)
 #define VEC_PUSH_BACK(x, val, type)                                     \
-    if (x->size >= x->capacity)                                         \
+    if (x->_size >= x->_capacity)                                         \
     {                                                                   \
-        size_t new_capacity = (x->capacity == 0) ? 1 : x->capacity * 2; \
-        type *new_data = realloc(x->data, new_capacity * sizeof(type)); \
+        size_t new_capacity = (x->_capacity == 0) ? 1 : x->_capacity * 2; \
+        type *new_data = realloc(x->_data, new_capacity * sizeof(type)); \
         if (!new_data)                                                  \
         {                                                               \
             exit(EXIT_FAILURE);                                         \
         }                                                               \
-        x->data = new_data;                                             \
-        x->capacity = new_capacity;                                     \
+        x->_data = new_data;                                             \
+        x->_capacity = new_capacity;                                     \
     }                                                                   \
-    x->data[x->size++] = val;
+    x->_data[x->_size++] = val;
 #define VEC_POP_BACK(x) \
-    if (x->size > 0)    \
+    if (x->_size > 0)    \
     {                   \
-        x->size--;      \
+        x->_size--;      \
     }
-#define VEC_VALID_INDEX(x, index) return (0 <= index && index < x->size)
-#define VEC_GET(x, index) return (x->data[index])
+#define VEC_VALID_INDEX(x, index) return (0 <= index && index < x->_size)
+#define VEC_GET(x, index) return (x->_data[index])
 #define VEC_SET(x, index, val) \
-    x->data[index] = val
-#define VEC_SIZE(x) (x->size)
-#define VEC_CAPACITY(x) (x->capacity)
+    x->_data[index] = val
+#define VEC_SIZE(x) (x->_size)
+#define VEC_CAPACITY(x) (x->_capacity)
 #define VEC_RESERVE(x, new_cap, type)                              \
-    if (new_cap > x->capacity)                                     \
+    if (new_cap > x->_capacity)                                     \
     {                                                              \
-        type *new_data = realloc(x->data, new_cap * sizeof(type)); \
+        type *new_data = realloc(x->_data, new_cap * sizeof(type)); \
         if (!new_data)                                             \
         {                                                          \
             exit(EXIT_FAILURE);                                    \
         }                                                          \
-        x->data = new_data;                                        \
-        x->capacity = new_cap;                                     \
+        x->_data = new_data;                                        \
+        x->_capacity = new_cap;                                     \
     }
 #define VEC_RESIZE(x, new_size, type)                               \
-    if (new_size > x->capacity)                                     \
+    if (new_size > x->_capacity)                                     \
     {                                                               \
-        type *new_data = realloc(x->data, new_size * sizeof(type)); \
+        type *new_data = realloc(x->_data, new_size * sizeof(type)); \
         if (!new_data)                                              \
         {                                                           \
             exit(EXIT_FAILURE);                                     \
         }                                                           \
-        x->data = new_data;                                         \
-        x->capacity = new_size;                                     \
+        x->_data = new_data;                                         \
+        x->_capacity = new_size;                                     \
     }                                                               \
-    x->size = new_size
+    x->_size = new_size
 #define VEC_CLEAR(x) \
-    x->size = 0
+    x->_size = 0
 #define VEC_EMPTY(x) \
-    x->size == 0
+    x->_size == 0
 #define VEC_FIND(x, val, type)           \
-    for (size_t i = 0; i < x->size; i++) \
+    for (size_t i = 0; i < x->_size; i++) \
     {                                    \
-        if (x->data[i] = val)           \
+        if (x->_data[i] = val)           \
         {                                \
             return (int)i;               \
         }                                \
     }                                    \
     return -1    // Not found
 #define VEC_FIND_COMP(x, pval, type, comp)           \
-    for (size_t i = 0; i < x->size; i++) \
+    for (size_t i = 0; i < x->_size; i++) \
     {                                    \
-        if (comp(x->data + i, pval))           \
+        if (comp(x->_data + i, pval))           \
         {                                \
             return (int)i;               \
         }                                \
     }                                    \
     return -1    // Not found
 #define VEC_REMOVE(x, index)                     \
-    for (size_t i = index; i < x->size - 1; i++) \
+    for (size_t i = index; i < x->_size - 1; i++) \
     {                                            \
-        x->data[i] = x->data[i + 1];             \
+        x->_data[i] = x->_data[i + 1];             \
     }                                            \
-    x->size--
+    x->_size--
 #define VEC_INSERT(x, index, val, type)                                 \
-    if (x->size >= x->capacity)                                         \
+    if (x->_size >= x->_capacity)                                         \
     {                                                                   \
-        size_t new_capacity = x->capacity == 0 ? 1 : x->capacity * 2;   \
-        type *new_data = realloc(x->data, new_capacity * sizeof(char)); \
+        size_t new_capacity = x->_capacity == 0 ? 1 : x->_capacity * 2;   \
+        type *new_data = realloc(x->_data, new_capacity * sizeof(char)); \
         if (!new_data)                                                  \
         {                                                               \
             exit(EXIT_FAILURE);                                         \
         }                                                               \
-        x->data = new_data;                                             \
-        x->capacity = new_capacity;                                     \
+        x->_data = new_data;                                             \
+        x->_capacity = new_capacity;                                     \
     }                                                                   \
-    for (size_t i = x->size; i > index; i--)                            \
+    for (size_t i = x->_size; i > index; i--)                            \
     {                                                                   \
-        x->data[i] = x->data[i - 1];                                    \
+        x->_data[i] = x->_data[i - 1];                                    \
     }                                                                   \
-    x->data[index] = val;                                             \
-    x->size++
+    x->_data[index] = val;                                             \
+    x->_size++
 #define VEC_SHRINK_TO_FIT(x, type)                                 \
-    if (x->size < x->capacity)                                     \
+    if (x->_size < x->_capacity)                                     \
     {                                                              \
-        type *new_data = realloc(x->data, x->size * sizeof(type)); \
-        if (!new_data && x->size > 0)                              \
+        type *new_data = realloc(x->_data, x->_size * sizeof(type)); \
+        if (!new_data && x->_size > 0)                              \
         {                                                          \
             exit(EXIT_FAILURE);                                    \
         }                                                          \
-        x->data = new_data;                                        \
-        x->capacity = x->size;                                     \
+        x->_data = new_data;                                        \
+        x->_capacity = x->_size;                                     \
     }
 #define VEC_SWAP(x, y, type) \
     {                        \
@@ -134,44 +134,44 @@
     }
 #define VEC_COPY(dest, src, type)                          \
     {                                                      \
-        if (dest->data)                                    \
+        if (dest->_data)                                    \
         {                                                  \
-            free(dest->data);                              \
+            free(dest->_data);                              \
         }                                                  \
-        dest->size = 0;                                    \
-        dest->capacity = 0;                                \
-        if (src->size > 0)                                 \
+        dest->_size = 0;                                    \
+        dest->_capacity = 0;                                \
+        if (src->_size > 0)                                 \
         {                                                  \
-            dest->data = malloc(src->size * sizeof(type)); \
-            if (!dest->data)                               \
+            dest->_data = malloc(src->_size * sizeof(type)); \
+            if (!dest->_data)                               \
             {                                              \
                 exit(EXIT_FAILURE);                        \
             }                                              \
-            for (size_t i = 0; i < src->size; i++)         \
+            for (size_t i = 0; i < src->_size; i++)         \
             {                                              \
-                dest->data[i] = src->data[i];              \
+                dest->_data[i] = src->_data[i];              \
             }                                              \
-            dest->size = src->size;                        \
-            dest->capacity = src->size;                    \
+            dest->_size = src->_size;                        \
+            dest->_capacity = src->_size;                    \
         }                                                  \
     }
 #define VEC_MOVE(dst,src) \
-       if (dest->data)                                    \
+       if (dest->_data)                                    \
         {                                                  \
-            free(dest->data);                              \
+            free(dest->_data);                              \
         }                                                  \
-        dest->size = src->size;                            \
-        dest->capacity = src->capacity;                    \
-        dest->data = src->data
+        dest->_size = src->_size;                            \
+        dest->_capacity = src->_capacity;                    \
+        dest->_data = src->_data
 #define VEC_REVERSE(x, type)                \
     {                                       \
         size_t left = 0;                    \
-        size_t right = x->size - 1;         \
+        size_t right = x->_size - 1;         \
         while (left < right)                \
         {                                   \
-            type temp = x->data[left];      \
-            x->data[left] = x->data[right]; \
-            x->data[right] = temp;          \
+            type temp = x->_data[left];      \
+            x->_data[left] = x->_data[right]; \
+            x->_data[right] = temp;          \
             left++;                         \
             right--;                        \
         }                                   \
@@ -182,9 +182,9 @@
 //
 typedef struct
 {
-    char *data;
-    size_t size;
-    size_t capacity;
+    char *_data;
+    size_t _size;
+    size_t _capacity;
 } char_vec;
 
 char_vec *char_vec_create();
@@ -215,9 +215,9 @@ void char_vec_move(char_vec *dest, const char_vec *src);
 //
 typedef struct
 {
-    int *data;
-    size_t size;
-    size_t capacity;
+    int *_data;
+    size_t _size;
+    size_t _capacity;
 } int_vec;
 
 int_vec *int_vec_create();
@@ -247,9 +247,9 @@ void int_vec_move(int_vec *dest, const int_vec *src);
 //
 typedef struct
 {
-    double *data;
-    size_t size;
-    size_t capacity;
+    double *_data;
+    size_t _size;
+    size_t _capacity;
 } double_vec;
 
 double_vec *double_vec_create();
@@ -273,35 +273,3 @@ void double_vec_shrink_to_fit(double_vec *vec);
 void double_vec_swap(double_vec *vec1, double_vec *vec2);
 void double_vec_copy(double_vec *dest, const double_vec *src);
 void double_vec_move(double_vec *dest, const double_vec *src);
-
-//
-// Vector declaration for pointer members
-//
-typedef struct
-{
-    void **data;
-    size_t size;
-    size_t capacity;
-} ptr_vec;
-
-ptr_vec *ptr_vec_create();
-void ptr_vec_init(ptr_vec *vec);
-void ptr_vec_finit(ptr_vec *vec);
-void ptr_vec_destroy(ptr_vec *vec);
-void ptr_vec_push_back(ptr_vec *vec, void *value);
-void ptr_vec_pop_back(ptr_vec *vec);
-void *ptr_vec_get(const ptr_vec *vec, size_t index);
-void ptr_vec_set(ptr_vec *vec, size_t index, void *value);
-size_t ptr_vec_size(const ptr_vec *vec);
-size_t ptr_vec_capacity(const ptr_vec *vec);
-void ptr_vec_reserve(ptr_vec *vec, size_t new_capacity);
-void ptr_vec_resize(ptr_vec *vec, size_t new_size);
-void ptr_vec_clear(ptr_vec *vec);
-int ptr_vec_find(const ptr_vec *vec, void *value);
-void ptr_vec_remove(ptr_vec *vec, size_t index);
-void ptr_vec_insert(ptr_vec *vec, size_t index, void *value);
-void ptr_vec_reverse(ptr_vec *vec);
-void ptr_vec_shrink_to_fit(ptr_vec *vec);
-void ptr_vec_swap(ptr_vec *vec1, ptr_vec *vec2);
-void ptr_vec_copy(ptr_vec *dest, const ptr_vec *src);
-void ptr_vec_move(ptr_vec *dest, const ptr_vec *src);

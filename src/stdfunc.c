@@ -1,8 +1,8 @@
 #include <string.h>
 
-#include "function.h"
+#include "stdfunc.h"
 
-void string_view_split_1(string_view_vec *vec, const char *str, char delimiter)
+void string_view_split(string_view_vec *vec, const char *str, char delimiter)
 {
     size_t start = 0;
     size_t len = strlen(str);
@@ -12,13 +12,12 @@ void string_view_split_1(string_view_vec *vec, const char *str, char delimiter)
         {
             string_view *sv = string_view_create(&str[start], i - start);
             string_view_vec_push_back(vec, sv);
-
             start = i + 1;
         }
     }
 }
 
-void string_view_split_2(string_view_vec *vec, const char *str, const char *delimiter)
+void string_view_split_str(string_view_vec *vec, const char *str, const char *delimiter)
 {
     size_t start = 0;
     size_t len = strlen(str);
@@ -45,12 +44,12 @@ void string_view_split_2(string_view_vec *vec, const char *str, const char *deli
         string_view_vec_push_back(vec, sv);
     }
 }
-void string_view_string_split_1(string_view_vec *vec, const string *str, char delimiter)
+void string_view_string_split(string_view_vec *vec, const string *str, char delimiter)
 {
-    string_view_split_1(vec, string_c_str(str), delimiter);
+    string_view_split(vec, string_c_str(str), delimiter);
 }
 
-void string_view_string_split_2(string_view_vec *vec, const string *str, const char *delimiter)
+void string_view_string_split_str(string_view_vec *vec, const string *str, const char *delimiter)
 {
-    string_view_split_2(vec, string_c_str(str), delimiter);
+    string_view_split_str(vec, string_c_str(str), delimiter);
 }

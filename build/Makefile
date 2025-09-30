@@ -240,29 +240,53 @@ examples/string_demo.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/string_demo.dir/build.make CMakeFiles/string_demo.dir/examples/string_demo.c.s
 .PHONY : examples/string_demo.c.s
 
-src/function.o: src/function.c.o
-.PHONY : src/function.o
+src/stdfunc.o: src/stdfunc.c.o
+.PHONY : src/stdfunc.o
 
 # target to build an object file
-src/function.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/function.c.o
-.PHONY : src/function.c.o
+src/stdfunc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdfunc.c.o
+.PHONY : src/stdfunc.c.o
 
-src/function.i: src/function.c.i
-.PHONY : src/function.i
+src/stdfunc.i: src/stdfunc.c.i
+.PHONY : src/stdfunc.i
 
 # target to preprocess a source file
-src/function.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/function.c.i
-.PHONY : src/function.c.i
+src/stdfunc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdfunc.c.i
+.PHONY : src/stdfunc.c.i
 
-src/function.s: src/function.c.s
-.PHONY : src/function.s
+src/stdfunc.s: src/stdfunc.c.s
+.PHONY : src/stdfunc.s
 
 # target to generate assembly for a file
-src/function.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/function.c.s
-.PHONY : src/function.c.s
+src/stdfunc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdfunc.c.s
+.PHONY : src/stdfunc.c.s
+
+src/stdopt.o: src/stdopt.c.o
+.PHONY : src/stdopt.o
+
+# target to build an object file
+src/stdopt.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdopt.c.o
+.PHONY : src/stdopt.c.o
+
+src/stdopt.i: src/stdopt.c.i
+.PHONY : src/stdopt.i
+
+# target to preprocess a source file
+src/stdopt.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdopt.c.i
+.PHONY : src/stdopt.c.i
+
+src/stdopt.s: src/stdopt.c.s
+.PHONY : src/stdopt.s
+
+# target to generate assembly for a file
+src/stdopt.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdopt.c.s
+.PHONY : src/stdopt.c.s
 
 src/stdstr.o: src/stdstr.c.o
 .PHONY : src/stdstr.o
@@ -381,9 +405,12 @@ help:
 	@echo "... examples/string_demo.o"
 	@echo "... examples/string_demo.i"
 	@echo "... examples/string_demo.s"
-	@echo "... src/function.o"
-	@echo "... src/function.i"
-	@echo "... src/function.s"
+	@echo "... src/stdfunc.o"
+	@echo "... src/stdfunc.i"
+	@echo "... src/stdfunc.s"
+	@echo "... src/stdopt.o"
+	@echo "... src/stdopt.i"
+	@echo "... src/stdopt.s"
 	@echo "... src/stdstr.o"
 	@echo "... src/stdstr.i"
 	@echo "... src/stdstr.s"

@@ -8,8 +8,9 @@ set(SOURCES
     src/stdvec.c
     src/stdstring.c
     src/stdstring_view.c
-    src/function.c
+    src/stdfunc.c
     src//stdstr.c
+    src/stdopt.c
     # Add more source files as needed
 )
 

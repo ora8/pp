@@ -22,5 +22,6 @@ CMakeFiles/pp.dir/src/stdstring.c.o: /home/urs-wagner/pp/src/stdstring.c \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+ /home/urs-wagner/pp/include/stdarray.h \
  /home/urs-wagner/pp/include/stdstring.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h

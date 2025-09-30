@@ -10,8 +10,8 @@
 //
 typedef struct
 {
-    char *c_str;
-    size_t size;
+    char *_c_str;
+    size_t _size;
 } string_view;
 
 string_view *string_view_create(const char c_str[], size_t size);
@@ -28,9 +28,9 @@ int string_view_vec_compare(const string_view *sv1, const string_view *sv2);
 // Vector of string_view declaration
 //
 typedef struct {
-    string_view *data;
-    size_t size;
-    size_t capacity;    
+    string_view *_data;
+    size_t _size;
+    size_t _capacity;    
 } string_view_vec;
 
 string_view_vec *string_view_vec_create();

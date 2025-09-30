@@ -1,5 +1,6 @@
 #include <string.h>
 
+#include "stdarray.h"
 #include "stdstring_view.h"
 
 //
@@ -19,8 +20,8 @@ string_view *string_view_create(const char c_str[], size_t size)
 
 void string_view_init(string_view *sv, const char c_str[], size_t size)
 {
-    sv->c_str = (char *)c_str;
-    sv->size = size;
+    sv->_c_str = (char *)c_str;
+    sv->_size = size;
 }
 
 void string_view_destroy(string_view *sv)
@@ -30,29 +31,29 @@ void string_view_destroy(string_view *sv)
 
 size_t string_view_size(const string_view *sv)
 {
-    return sv->size;
+    return sv->_size;
 }
 
 const char *string_view_c_str(const string_view *sv)
 {
-    return sv->c_str;
+    return sv->_c_str;
 }
 
 int string_view_valid_index(const string_view *sv, size_t index)
 {
-    return 0 <= index && index < sv->size;
+    return index < sv->_size;
 }
 
 char string_view_get(const string_view *sv, size_t index)
 {
-    return sv->c_str[index];
+    return sv->_c_str[index];
 }
 
 int string_view_find(const string_view *sv, char c)
 {
-    for (size_t i = 0; i < sv->size; i++)
+    for (size_t i = 0; i < sv->_size; i++)
     {
-        if (sv->c_str[i] == c)
+        if (sv->_c_str[i] == c)
         {
             return (int)i;
         }
@@ -126,11 +127,7 @@ void string_view_vec_clear(string_view_vec *vec)
 
 int string_view_vec_compare(const string_view *sv1, const string_view *sv2)
 {
-    if (sv1->size != sv2->size)
-    {
-        return 0;
-    }
-    return memcmp(sv1->c_str, sv2->c_str, sv1->size);
+    return CHAR_ARRAY_COMPARE(sv1->_c_str, sv1->_size, sv2->_c_str, sv2->_size);
 }
 
 int string_view_vec_find(const string_view_vec *vec, string_view *p_value)

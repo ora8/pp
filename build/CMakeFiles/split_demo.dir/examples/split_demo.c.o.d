@@ -1,6 +1,6 @@
 CMakeFiles/split_demo.dir/examples/split_demo.c.o: \
  /home/urs-wagner/pp/examples/split_demo.c /usr/include/stdc-predef.h \
- /home/urs-wagner/pp/include/function.h /usr/include/stdlib.h \
+ /home/urs-wagner/pp/include/stdfunc.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
