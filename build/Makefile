@@ -168,6 +168,80 @@ str_demo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/str_demo.dir/build.make CMakeFiles/str_demo.dir/build
 .PHONY : str_demo/fast
 
+#=============================================================================
+# Target rules for targets named option_demo
+
+# Build rule for target.
+option_demo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 option_demo
+.PHONY : option_demo
+
+# fast build rule for target.
+option_demo/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/option_demo.dir/build.make CMakeFiles/option_demo.dir/build
+.PHONY : option_demo/fast
+
+#=============================================================================
+# Target rules for targets named conv_demo
+
+# Build rule for target.
+conv_demo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 conv_demo
+.PHONY : conv_demo
+
+# fast build rule for target.
+conv_demo/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/conv_demo.dir/build.make CMakeFiles/conv_demo.dir/build
+.PHONY : conv_demo/fast
+
+examples/conv_demo.o: examples/conv_demo.c.o
+.PHONY : examples/conv_demo.o
+
+# target to build an object file
+examples/conv_demo.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/conv_demo.dir/build.make CMakeFiles/conv_demo.dir/examples/conv_demo.c.o
+.PHONY : examples/conv_demo.c.o
+
+examples/conv_demo.i: examples/conv_demo.c.i
+.PHONY : examples/conv_demo.i
+
+# target to preprocess a source file
+examples/conv_demo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/conv_demo.dir/build.make CMakeFiles/conv_demo.dir/examples/conv_demo.c.i
+.PHONY : examples/conv_demo.c.i
+
+examples/conv_demo.s: examples/conv_demo.c.s
+.PHONY : examples/conv_demo.s
+
+# target to generate assembly for a file
+examples/conv_demo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/conv_demo.dir/build.make CMakeFiles/conv_demo.dir/examples/conv_demo.c.s
+.PHONY : examples/conv_demo.c.s
+
+examples/option_demo.o: examples/option_demo.c.o
+.PHONY : examples/option_demo.o
+
+# target to build an object file
+examples/option_demo.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/option_demo.dir/build.make CMakeFiles/option_demo.dir/examples/option_demo.c.o
+.PHONY : examples/option_demo.c.o
+
+examples/option_demo.i: examples/option_demo.c.i
+.PHONY : examples/option_demo.i
+
+# target to preprocess a source file
+examples/option_demo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/option_demo.dir/build.make CMakeFiles/option_demo.dir/examples/option_demo.c.i
+.PHONY : examples/option_demo.c.i
+
+examples/option_demo.s: examples/option_demo.c.s
+.PHONY : examples/option_demo.s
+
+# target to generate assembly for a file
+examples/option_demo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/option_demo.dir/build.make CMakeFiles/option_demo.dir/examples/option_demo.c.s
+.PHONY : examples/option_demo.c.s
+
 examples/split_demo.o: examples/split_demo.c.o
 .PHONY : examples/split_demo.o
 
@@ -239,6 +313,30 @@ examples/string_demo.s: examples/string_demo.c.s
 examples/string_demo.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/string_demo.dir/build.make CMakeFiles/string_demo.dir/examples/string_demo.c.s
 .PHONY : examples/string_demo.c.s
+
+src/stdconv.o: src/stdconv.c.o
+.PHONY : src/stdconv.o
+
+# target to build an object file
+src/stdconv.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdconv.c.o
+.PHONY : src/stdconv.c.o
+
+src/stdconv.i: src/stdconv.c.i
+.PHONY : src/stdconv.i
+
+# target to preprocess a source file
+src/stdconv.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdconv.c.i
+.PHONY : src/stdconv.c.i
+
+src/stdconv.s: src/stdconv.c.s
+.PHONY : src/stdconv.s
+
+# target to generate assembly for a file
+src/stdconv.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pp.dir/build.make CMakeFiles/pp.dir/src/stdconv.c.s
+.PHONY : src/stdconv.c.s
 
 src/stdfunc.o: src/stdfunc.c.o
 .PHONY : src/stdfunc.o
@@ -392,10 +490,18 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... conv_demo"
+	@echo "... option_demo"
 	@echo "... pp"
 	@echo "... split_demo"
 	@echo "... str_demo"
 	@echo "... string_demo"
+	@echo "... examples/conv_demo.o"
+	@echo "... examples/conv_demo.i"
+	@echo "... examples/conv_demo.s"
+	@echo "... examples/option_demo.o"
+	@echo "... examples/option_demo.i"
+	@echo "... examples/option_demo.s"
 	@echo "... examples/split_demo.o"
 	@echo "... examples/split_demo.i"
 	@echo "... examples/split_demo.s"
@@ -405,6 +511,9 @@ help:
 	@echo "... examples/string_demo.o"
 	@echo "... examples/string_demo.i"
 	@echo "... examples/string_demo.s"
+	@echo "... src/stdconv.o"
+	@echo "... src/stdconv.i"
+	@echo "... src/stdconv.s"
 	@echo "... src/stdfunc.o"
 	@echo "... src/stdfunc.i"
 	@echo "... src/stdfunc.s"

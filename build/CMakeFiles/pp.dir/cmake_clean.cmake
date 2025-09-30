@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/pp.dir/src/stdconv.c.o"
+  "CMakeFiles/pp.dir/src/stdconv.c.o.d"
   "CMakeFiles/pp.dir/src/stdfunc.c.o"
   "CMakeFiles/pp.dir/src/stdfunc.c.o.d"
   "CMakeFiles/pp.dir/src/stdopt.c.o"

@@ -11,6 +11,7 @@ set(SOURCES
     src/stdfunc.c
     src//stdstr.c
     src/stdopt.c
+    src/stdconv.c
     # Add more source files as needed
 )
 
@@ -30,6 +31,12 @@ add_executable(split_demo examples/split_demo.c)
 # Add the str demo executable
 add_executable(str_demo examples/str_demo.c)
 
+# Add the option demo executable
+add_executable(option_demo examples/option_demo.c)
+
+# Add the convert demo executable
+add_executable(conv_demo examples/conv_demo.c)
+
 # Link the library to the demo executable
 target_link_libraries(string_demo PRIVATE pp)
 
@@ -38,6 +45,12 @@ target_link_libraries(split_demo PRIVATE pp)
 
 # Link the library to the demo executable
 target_link_libraries(str_demo PRIVATE pp)
+
+# Link the library to the demo executable
+target_link_libraries(option_demo PRIVATE pp)
+
+# Link the library to the demo executable
+target_link_libraries(conv_demo PRIVATE pp)
 
 # Optionally, you can set the C standard
 set_target_properties(pp PROPERTIES

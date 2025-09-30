@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/urs-wagner/pp/src/stdconv.c" "CMakeFiles/pp.dir/src/stdconv.c.o" "gcc" "CMakeFiles/pp.dir/src/stdconv.c.o.d"
   "/home/urs-wagner/pp/src/stdfunc.c" "CMakeFiles/pp.dir/src/stdfunc.c.o" "gcc" "CMakeFiles/pp.dir/src/stdfunc.c.o.d"
   "/home/urs-wagner/pp/src/stdopt.c" "CMakeFiles/pp.dir/src/stdopt.c.o" "gcc" "CMakeFiles/pp.dir/src/stdopt.c.o.d"
   "/home/urs-wagner/pp/src/stdstr.c" "CMakeFiles/pp.dir/src/stdstr.c.o" "gcc" "CMakeFiles/pp.dir/src/stdstr.c.o.d"

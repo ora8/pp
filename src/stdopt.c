@@ -1,240 +1,481 @@
 #include "stdopt.h"
 
-char_option *char_option_create_none()
+opt_char *opt_char_create_none()
 {
-    OPTION_CREATE_NONE(char_option);
+    OPTION_CREATE_NONE(opt_char);
 }
 
-char_option *char_option_create(char value)
+opt_char *opt_char_create(char value)
 {
-    OPTION_CREATE(value, char_option);
+    OPTION_CREATE(value, opt_char);
 }
 
-void char_option_init_none(char_option *option)
-{
-    OPTION_INIT_NONE(option);
-}
-
-void char_option_init(char_option *option, char value)
-{
-    OPTION_INIT(option, value);
-}
-
-void char_option_destroy(char_option *option)
+void opt_char_destroy(opt_char *option)
 {
     OPTION_DESTROY(option);
 }
 
-bool char_option_none(char_option *option)
+bool opt_char_none(opt_char *option)
 {
     OPTION_NONE(option);
 }
 
-char char_option_some(char_option *option)
-{
-    OPTION_SOME(option);
-}
-
-bool char_option_has_some(char_option *option)
-{
-    OPTION_HAS_SOME(option);
-}
-
-short_option *short_option_create_none()
-{
-    OPTION_CREATE_NONE(short_option);
-}
-
-short_option *short_option_create(short value)
-{
-    OPTION_CREATE(value, short_option);
-}
-
-void short_option_init_none(short_option *option)
+void opt_char_set_none(opt_char *option)
 {
     OPTION_INIT_NONE(option);
 }
 
-void short_option_init(short_option *option, short value)
-{
-    OPTION_INIT(option, value);
-}
-
-void short_option_destroy(short_option *option)
-{
-    OPTION_DESTROY(option);
-}
-
-bool short_option_none(short_option *option)
-{
-    OPTION_NONE(option);
-}
-
-short short_option_some(short_option *option)
+char opt_char_some(opt_char *option)
 {
     OPTION_SOME(option);
 }
 
-bool short_option_has_some(short_option *option)
+void opt_char_set_some(opt_char *option, char value)
+{
+    OPTION_INIT(option, value);
+}
+
+bool opt_char_has_some(opt_char *option)
 {
     OPTION_HAS_SOME(option);
 }
 
-int_option *int_option_create_none()
+opt_short *opt_short_create_none()
 {
-    OPTION_CREATE_NONE(int_option);
+    OPTION_CREATE_NONE(opt_short);
 }
 
-int_option *int_option_create(int value)
+opt_short *opt_short_create(short value)
 {
-    OPTION_CREATE(value, int_option);
+    OPTION_CREATE(value, opt_short);
 }
 
-void int_option_init_none(int_option *option)
+void opt_short_destroy(opt_short *option)
+{
+    OPTION_DESTROY(option);
+}
+
+bool opt_short_none(opt_short *option)
+{
+    OPTION_NONE(option);
+}
+
+void opt_short_set_none(opt_short *option)
 {
     OPTION_INIT_NONE(option);
 }
 
-void int_option_init(int_option *option, int value)
-{
-    OPTION_INIT(option, value);
-}
-
-void int_option_destroy(int_option *option)
-{
-    OPTION_DESTROY(option);
-}
-
-bool int_option_none(int_option *option)
-{
-    OPTION_NONE(option);
-}
-
-int int_option_some(int_option *option)
+short opt_short_some(opt_short *option)
 {
     OPTION_SOME(option);
 }
 
-bool int_option_has_some(int_option *option)
+void opt_short_set_some(opt_short *option, short value)
+{
+    OPTION_INIT(option, value);
+}
+
+bool opt_short_has_some(opt_short *option)
 {
     OPTION_HAS_SOME(option);
 }
 
-long_option *long_option_create_none()
+opt_int *opt_int_create_none()
 {
-    OPTION_CREATE_NONE(long_option);
+    OPTION_CREATE_NONE(opt_int);
 }
 
-long_option *long_option_create(long value)
+opt_int *opt_int_create(int value)
 {
-    OPTION_CREATE(value, long_option);
+    OPTION_CREATE(value, opt_int);
 }
 
-void long_option_init_none(long_option *option)
+void opt_int_destroy(opt_int *option)
+{
+    OPTION_DESTROY(option);
+}
+
+bool opt_int_none(opt_int *option)
+{
+    OPTION_NONE(option);
+}
+
+void opt_int_set_none(opt_int *option)
 {
     OPTION_INIT_NONE(option);
 }
 
-void long_option_init(long_option *option, long value)
-{
-    OPTION_INIT(option, value);
-}
-
-void long_option_destroy(long_option *option)
-{
-    OPTION_DESTROY(option);
-}
-
-bool long_option_none(long_option *option)
-{
-    OPTION_NONE(option);
-}
-
-long long_option_some(long_option *option)
+int opt_int_some(opt_int *option)
 {
     OPTION_SOME(option);
 }
 
-bool long_option_has_some(long_option *option)
-{
-    OPTION_HAS_SOME(option);
-}
-
-float_option *float_option_create_none()
-{
-    OPTION_CREATE_NONE(float_option);
-}
-
-float_option *float_option_create(float value)
-{
-    OPTION_CREATE(value, float_option);
-}
-
-void float_option_init_none(float_option *option)
-{
-    OPTION_INIT_NONE(option);
-}
-void float_option_init(float_option *option, float value)
+void opt_int_set_some(opt_int *option, int value)
 {
     OPTION_INIT(option, value);
 }
 
-void float_option_destroy(float_option *option)
-{
-    OPTION_DESTROY(option);
-}
-
-bool float_option_none(float_option *option)
-{
-    OPTION_NONE(option);
-}
-
-float float_option_some(float_option *option)
-{
-    OPTION_SOME(option);
-}
-
-bool float_option_has_some(float_option *option)
+bool opt_int_has_some(opt_int *option)
 {
     OPTION_HAS_SOME(option);
 }
 
-double_option *double_option_create_none()
+opt_long *opt_long_create_none()
 {
-    OPTION_CREATE_NONE(double_option);
+    OPTION_CREATE_NONE(opt_long);
 }
 
-double_option *double_option_create(double value)
+opt_long *opt_long_create(long value)
 {
-    OPTION_CREATE(value, double_option);
+    OPTION_CREATE(value, opt_long);
 }
 
-void double_option_init_none(double_option *option)
+void opt_long_destroy(opt_long *option)
+{
+    OPTION_DESTROY(option);
+}
+
+bool opt_long_none(opt_long *option)
+{
+    OPTION_NONE(option);
+}
+
+void opt_long_set_none(opt_long *option)
 {
     OPTION_INIT_NONE(option);
 }
 
-void double_option_init(double_option *option, double value)
-{
-    OPTION_INIT(option, value);
-}
-
-void double_option_destroy(double_option *option)
-{
-    OPTION_DESTROY(option);
-}
-
-bool double_option_none(double_option *option)
-{
-    OPTION_NONE(option);
-}
-
-double double_option_some(double_option *option)
+long opt_long_some(opt_long *option)
 {
     OPTION_SOME(option);
 }
 
-bool double_option_has_some(double_option *option)
+void opt_long_set_some(opt_long *option, long value)
+{
+    OPTION_INIT(option, value);
+}
+
+bool opt_long_has_some(opt_long *option)
 {
     OPTION_HAS_SOME(option);
+}
+
+opt_float *opt_float_create_none()
+{
+    OPTION_CREATE_NONE(opt_float);
+}
+
+opt_float *opt_float_create(float value)
+{
+    OPTION_CREATE(value, opt_float);
+}
+
+void opt_float_destroy(opt_float *option)
+{
+    OPTION_DESTROY(option);
+}
+
+bool opt_float_none(opt_float *option)
+{
+    OPTION_NONE(option);
+}
+
+void opt_float_set_none(opt_float *option)
+{
+    OPTION_INIT_NONE(option);
+}
+
+float opt_float_some(opt_float *option)
+{
+    OPTION_SOME(option);
+}
+
+void opt_float_set_some(opt_float *option, float value)
+{
+    OPTION_INIT(option, value);
+}
+
+bool opt_float_has_some(opt_float *option)
+{
+    OPTION_HAS_SOME(option);
+}
+
+opt_double *opt_double_create_none()
+{
+    OPTION_CREATE_NONE(opt_double);
+}
+
+opt_double *opt_double_create(double value)
+{
+    OPTION_CREATE(value, opt_double);
+}
+
+void opt_double_destroy(opt_double *option)
+{
+    OPTION_DESTROY(option);
+}
+
+bool opt_double_none(opt_double *option)
+{
+    OPTION_NONE(option);
+}
+
+void opt_double_set_none(opt_double *option)
+{
+    OPTION_INIT_NONE(option);
+}
+
+double opt_double_some(opt_double *option)
+{
+    OPTION_SOME(option);
+}
+
+void opt_double_set_some(opt_double *option, double value)
+{
+    OPTION_INIT(option, value);
+}
+
+bool opt_double_has_some(opt_double *option)
+{
+    OPTION_HAS_SOME(option);
+}
+
+opt_pchar *opt_pchar_create_none()
+{
+    PTR_OPTION_CREATE_NONE(opt_pchar);
+}
+
+opt_pchar *opt_pchar_create(char *value)
+{
+    PTR_OPTION_CREATE(value, opt_pchar);
+}
+
+void opt_pchar_destroy(opt_pchar *option)
+{
+    PTR_OPTION_DESTROY(option);
+}
+
+bool opt_pchar_none(opt_pchar *option)
+{
+    PTR_OPTION_NONE(option);
+}
+
+void opt_pchar_set_none(opt_pchar *option)
+{
+    PTR_OPTION_SET_NONE(option);
+}
+
+char *opt_pchar_some(opt_pchar *option)
+{
+    PTR_OPTION_SOME(option);
+}
+
+void opt_pchar_set_some(opt_pchar *option, char *value)
+{
+    PTR_OPTION_SET_SOME(option, value);
+}
+
+bool opt_pchar_has_some(opt_pchar *option)
+{
+    PTR_OPTION_HAS_SOME(option);
+}
+
+opt_pshort *opt_pshort_create_none()
+{
+    PTR_OPTION_CREATE_NONE(opt_pshort);
+}
+
+opt_pshort *opt_pshort_create(short *value)
+{
+    PTR_OPTION_CREATE(value, opt_pshort);
+}
+
+void opt_pshort_destroy(opt_pshort *option)
+{
+    PTR_OPTION_DESTROY(option);
+}
+
+bool opt_pshort_none(opt_pshort *option)
+{
+    PTR_OPTION_NONE(option);
+}
+
+void opt_pshort_set_none(opt_pshort *option)
+{
+    PTR_OPTION_SET_NONE(option);
+}
+
+short *opt_pshort_some(opt_pshort *option)
+{
+    PTR_OPTION_SOME(option);
+}
+
+void opt_pshort_set_some(opt_pshort *option, short *value)
+{
+    PTR_OPTION_SET_SOME(option, value);
+}
+
+bool opt_pshort_has_some(opt_pshort *option)
+{
+    PTR_OPTION_HAS_SOME(option);
+}
+
+opt_pint *opt_pint_create_none()
+{
+    PTR_OPTION_CREATE_NONE(opt_pint);
+}
+
+opt_pint *opt_pint_create(int *value)
+{
+    PTR_OPTION_CREATE(value, opt_pint);
+}
+
+void opt_pint_destroy(opt_pint *option)
+{
+    PTR_OPTION_DESTROY(option);
+}
+
+bool opt_pint_none(opt_pint *option)
+{
+    PTR_OPTION_NONE(option);
+}
+
+void opt_pint_set_none(opt_pint *option)
+{
+    PTR_OPTION_SET_NONE(option);
+}
+
+int *opt_pint_some(opt_pint *option)
+{
+    PTR_OPTION_SOME(option);
+}
+
+void opt_pint_set_some(opt_pint *option, int *value)
+{
+    PTR_OPTION_SET_SOME(option, value);
+}
+
+bool opt_pint_has_some(opt_pint *option)
+{
+    PTR_OPTION_HAS_SOME(option);
+}
+
+opt_plong *opt_plong_create_none()
+{
+    PTR_OPTION_CREATE_NONE(opt_plong);
+}
+
+opt_plong *opt_plong_create(long *value)
+{
+    PTR_OPTION_CREATE(value, opt_plong);
+}
+
+void opt_plong_destroy(opt_plong *option)
+{
+    PTR_OPTION_DESTROY(option);
+}
+
+bool opt_plong_none(opt_plong *option)
+{
+    PTR_OPTION_NONE(option);
+}
+
+void opt_plong_set_none(opt_plong *option)
+{
+    PTR_OPTION_SET_NONE(option);
+}
+
+long *opt_plong_some(opt_plong *option)
+{
+    PTR_OPTION_SOME(option);
+}
+
+void opt_plong_set_some(opt_plong *option, long *value)
+{
+    PTR_OPTION_SET_SOME(option, value);
+}
+
+bool opt_plong_has_some(opt_plong *option)
+{
+    PTR_OPTION_HAS_SOME(option);
+}
+
+opt_pfloat *opt_pfloat_create_none()
+{
+    PTR_OPTION_CREATE_NONE(opt_pfloat);
+}
+
+opt_pfloat *opt_pfloat_create(float *value)
+{
+    PTR_OPTION_CREATE(value, opt_pfloat);
+}
+
+void opt_pfloat_destroy(opt_pfloat *option)
+{
+    PTR_OPTION_DESTROY(option);
+}
+
+bool opt_pfloat_none(opt_pfloat *option)
+{
+    PTR_OPTION_NONE(option);
+}
+
+void opt_pfloat_set_none(opt_pfloat *option)
+{
+    PTR_OPTION_SET_NONE(option);
+}
+
+float *opt_pfloat_some(opt_pfloat *option)
+{
+    PTR_OPTION_SOME(option);
+}
+
+void opt_pfloat_set_some(opt_pfloat *option, float *value)
+{
+    PTR_OPTION_SET_SOME(option, value);
+}
+
+bool opt_pfloat_has_some(opt_pfloat *option)
+{
+    PTR_OPTION_HAS_SOME(option);
+}
+
+opt_pdouble *opt_pdouble_create_none()
+{
+    PTR_OPTION_CREATE_NONE(opt_pdouble);
+}
+
+opt_pdouble *opt_pdouble_create(double *value)
+{
+    PTR_OPTION_CREATE(value, opt_pdouble);
+}
+
+void opt_pdouble_destroy(opt_pdouble *option)
+{
+    PTR_OPTION_DESTROY(option);
+}
+
+bool opt_pdouble_none(opt_pdouble *option)
+{
+    PTR_OPTION_NONE(option);
+}
+
+void opt_pdouble_set_none(opt_pdouble *option)
+{
+    PTR_OPTION_SET_NONE(option);
+}
+
+double *opt_pdouble_some(opt_pdouble *option)
+{
+    PTR_OPTION_SOME(option);
+}
+
+void opt_pdouble_set_some(opt_pdouble *option, double *value)
+{
+    PTR_OPTION_SET_SOME(option, value);
+}
+
+bool opt_pdouble_has_some(opt_pdouble *option)
+{
+    PTR_OPTION_HAS_SOME(option);
 }

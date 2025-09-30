@@ -147,4 +147,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/string_demo.dir/DependInfo.cmake"
   "CMakeFiles/split_demo.dir/DependInfo.cmake"
   "CMakeFiles/str_demo.dir/DependInfo.cmake"
+  "CMakeFiles/option_demo.dir/DependInfo.cmake"
+  "CMakeFiles/conv_demo.dir/DependInfo.cmake"
   )
