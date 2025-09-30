@@ -5,7 +5,7 @@
 int main()
 {
     char buf[128];
-    const char *text = "apple,banana,cherry";
+    const char *text = "apple,banana,cherry,peach";
     char delimiter1 = ',';
     const char *delimiter2 = ",b";
 
